@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TvStatsTitle">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="fontFamily">@font/univia_pro</item>
+    </style>
+
+    <style name="TvStatsParams">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">start</item>
+        <item name="fontFamily">@font/univia_pro</item>
+        <item name="android:layout_marginTop">@dimen/margin_padding_size_12</item>
+        <item name="android:layout_marginStart">@dimen/margin_padding_size_12</item>
+        <item name="android:layout_marginEnd">@dimen/margin_padding_size_12</item>
+    </style>
+
+    <style name="TvGameStats">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/univia_pro</item>
+    </style>
+
+    <style name="EtSettings">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/univia_pro</item>
+    </style>
+
+    <style name="SpinnerTheme" parent="Base.Widget.AppCompat.Spinner.Underlined">
+        <item name="android:background">@drawable/bg_gray_rounded</item>
+    </style>
+
+    <style name="SpinnerText">
+        <item name="android:fontFamily">@font/univia_pro</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonStart" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_height">66dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="rippleColor">#C1C1C1</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:elevation">@dimen/margin_padding_size_1</item>
+        <item name="android:layout_margin">@dimen/margin_padding_size_16</item>
+        <item name="fontFamily">@font/univia_pro</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="textAllCaps">false</item>
+        <item name="backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="ButtonDialog" parent="ButtonStart">
+        <item name="android:layout_margin">@null</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_padding_size_16</item>
+        <item name="android:layout_marginTop">@dimen/margin_padding_size_16</item>
+    </style>
+
+    <style name="TvTimerRound">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">80sp</item>
+        <item name="android:gravity">center</item>
+        <item name="fontFamily">@font/univia_pro</item>
+    </style>
+
+</resources>

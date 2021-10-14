@@ -1,0 +1,48 @@
+/**
+ * This file defines configuration for all project
+ */
+
+ext {
+
+    /**
+     * Common configuration for all project
+     */
+
+    globalConfig = [
+            compileSdkVersion: 31,
+            minSdkVersion    : 24,
+            targetSdkVersion : 31,
+            buildToolsVersion: "30.0.3",
+
+            baseUrl          : "\"https://api.content.example.com/\""
+    ]
+
+    /**
+     * Configuration for app module
+     */
+
+    def appVersionMajor = 1
+    def appVersionMinor = 0
+    def appVersionPatch = 0
+
+    appConfig = [
+
+            applicationId    : 'com.baseproject',
+
+            versionCode      : generateVersionCode(appVersionMajor, appVersionMinor, appVersionPatch),
+            versionName      : generateVersionName(appVersionMajor, appVersionMinor, appVersionPatch),
+    ]
+
+}
+
+/**
+ * Versions calculations
+ */
+
+static Integer generateVersionCode(versionMajor, versionMinor, versionPatch) {
+    return versionMajor * 100 + versionMinor * 10 + versionPatch
+}
+
+static String generateVersionName(versionMajor, versionMinor, versionPatch) {
+    return "${versionMajor}.${versionMinor}.${versionPatch}"
+}

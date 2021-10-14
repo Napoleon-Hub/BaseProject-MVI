@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">BaseProject</string>
+
+    <!-- User -->
+    <string name="user_stats">User statistics</string>
+    <string name="user_level">Level: %d</string>
+    <string name="user_attempts">Attempts: %d</string>
+    <string name="user_name">Nickname: %s</string>
+    <string name="user_social_status">Social Status: %s</string>
+    <string name="user_score">Score: %d</string>
+    <string name="user_win">Win</string>
+    <string name="user_lose">Lose</string>
+    <string name="user_start_game">Start</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="settings_name">Nickname*</string>
+    <string name="settings_social_status">Social status:</string>
+    <string name="settings_save">Save</string>
+    <string-array name="settings_social_status_array">
+        <item>Nazi</item>
+        <item>Pregnant</item>
+        <item>Alcoholic</item>
+    </string-array>
+
+    <!-- Game -->
+    <string name="game_auto_lose">Auto Lose</string>
+    <string name="game_rules">Press the buttons in the correct\n order to win</string>
+    <string-array name="game_words_array">
+        <item>one</item>
+        <item>two</item>
+        <item>three</item>
+        <item>four</item>
+        <item>five</item>
+        <item>six</item>
+        <item>seven</item>
+        <item>eight</item>
+        <item>nine</item>
+    </string-array>
+    <string name="game_win_title">Have you won?</string>
+    <string name="game_win_alcoholic_description">You won, of course, but instead of playing you\'d better go Alcoholics Anonymous and get some medical treatment</string>
+    <string name="game_win_pregnant_description">This is a victory, but if you are a pregnant guy, I advise you to see a doctor in Novinki.</string>
+    <string name="game_win_nazi_description">It\'s good that my game is just button presses. If the game had a button to start a holocaust, would you press it, Nazi?</string>
+    <string name="game_lose_title">Not today, bro:)</string>
+    <string name="game_lose_alcoholic_description">You have lost, but that doesn\'t mean that you need to take up the bottle right away. And most importantly, don\'t sit on it !!</string>
+    <string name="game_lose_pregnant_description">I don\'t know what could be worse, losing a child\'s game or getting pregnant at 16. What do you think?</string>
+    <string name="game_lose_nazi_description">Lost 1945 and lost in a child\'s play, Nazi)</string>
+    <string name="game_cancel">Cancel</string>
+
+    <!-- Errors -->
+    <string name="generic_error">Something went wrong. Please try later.</string>
+    <string name="server_error">Server error. Please try later.</string>
+    <string name="timeout_error">Timeout error. Please try again when network stabilizes.</string>
+    <string name="no_internet_connection_error">No internet connection. Please check the internet.</string>
+    <string name="unauthorized_error">Unauthorized error. Please sign-in and try again.</string>
+    <string name="not_found_error">404 error. Please try later.</string>
+    <string name="bad_request_error">400 error. Bad request. Please try later.</string>
+    <string name="account_already_exists_error">An account with this nickname already exists</string>
+    <string name="account_does_not_exist_error">No such account exists. Check the correctness of the entered account name</string>
+    <string name="empty_filed_error">This field must be filled</string>
+    <string name="invalid_email_error">Please enter a valid email address</string>
+    <string name="forbidden_max_length_error">Maximum 50 characters</string>
+    <string name="invalidate_name_error">Name must start with a letter and be 12 characters long: letters from a to z, numbers from 1 to 5</string>
+
+</resources>
