@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BaseProject</string>
+
+    <!-- User -->
+    <string name="user_stats">Статистика пользователя</string>
+    <string name="user_level">Уровень: %d</string>
+    <string name="user_attempts">Попыток: %d</string>
+    <string name="user_name">Никнейм: %s</string>
+    <string name="user_social_status">Социальный статус: %s</string>
+    <string name="user_score">Очки: %d</string>
+    <string name="user_win">Победа</string>
+    <string name="user_lose">Поражение</string>
+    <string name="user_start_game">Начать</string>
+
+    <!-- Settings -->
+    <string name="settings">Настройки</string>
+    <string name="settings_name">Никнейм*</string>
+    <string name="settings_social_status">Социальный статус:</string>
+    <string name="settings_save">Сохранить</string>
+    <string-array name="settings_social_status_array">
+        <item>Нацист</item>
+        <item>Беременный</item>
+        <item>Алкоголик</item>
+    </string-array>
+
+    <!-- Game -->
+    <string name="game_auto_lose">Сдаться</string>
+    <string name="game_rules">Нажимайте кнопки в верном порядке, чтобы победить</string>
+    <string-array name="game_words_array">
+        <item>один</item>
+        <item>два</item>
+        <item>три</item>
+        <item>четыре</item>
+        <item>пять</item>
+        <item>шесть</item>
+        <item>семь</item>
+        <item>восемь</item>
+        <item>девять</item>
+    </string-array>
+    <string name="game_win_title">Ты че реально победил?</string>
+    <string name="game_win_alcoholic_description">Ты конечно же победил, но ты не думал, что вместо того, чтобы играть в детскую игру лучше сходить в клуб анонимных алкоголиков и подлечиться?</string>
+    <string name="game_win_pregnant_description">Это победа. Но если вдруг ты парень и у тебя социальный статус - Беременный, мой совет - сходи подлечись в Новинках, братишка</string>
+    <string name="game_win_nazi_description">Повезло, что моя игра - это всего лишь нажимание кнопок в верном порядке. А если бы в моей игре была кнопка Начать Холокост, ты бы тоже нажал её, Нацик?</string>
+    <string name="game_lose_title">Не сегодня, братишка :)</string>
+    <string name="game_lose_alcoholic_description">Ты проиграл, но это не повод сразу браться за бутылку. И самое главное, не садись на неё!!</string>
+    <string name="game_lose_pregnant_description">Я не знаю, что может быть хуже, проиграть в детской игре, в которой можно ничего не делать и победить через минуту или же быть беременным в 16. Как думаешь?</string>
+    <string name="game_lose_nazi_description">Прогирал в 1945 и в детской игре тоже, да, Нацик?)</string>
+    <string name="game_cancel">Закрыть</string>
+
+    <!-- Errors -->
+    <string name="generic_error">Что-то пошло не так, пожалуйста повторите попытку позже.</string>
+    <string name="server_error">Ошибка сервера. Пожалуйста повторите попытку позже.</string>
+    <string name="timeout_error">Время ожидания истекло. Пожалуйста повторите попытку, когда связь стабилизируется.</string>
+    <string name="no_internet_connection_error">Нет интернет соединения.</string>
+    <string name="unauthorized_error">Ошибка авторизации. Пожалуйста попробуйте ещё раз.</string>
+    <string name="not_found_error">Ошибка 404. Пожалуйста повторите попытку позже.</string>
+    <string name="bad_request_error">Ошибка 400. Пожалуйста повторите попытку позже.</string>
+    <string name="account_already_exists_error">Аккаунт с таким никнеймом уже существует.</string>
+    <string name="account_does_not_exist_error">Аккаунта с таким никнеймом не существует. Проверьте правильность введенного никнейма.</string>
+    <string name="empty_filed_error">Это поле должно быть заполнено</string>
+    <string name="invalid_email_error">Пожалуйста введите валидный e-mail адресс</string>
+    <string name="forbidden_max_length_error">Максимум 550 символов</string>
+    <string name="invalidate_name_error">Имя должно начинаться с буквы и быть длиной 12 символов: буквы лаинского алфавита от a to z, цифры от 1 to 5</string>
+
+</resources>
