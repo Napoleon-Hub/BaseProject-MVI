@@ -24,6 +24,11 @@
         <item name="fontFamily">@font/univia_pro</item>
     </style>
 
+    <style name="TvGameGray" parent="TvGameStats">
+        <item name="android:textColor">@color/grey_light</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="EtSettings">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
@@ -68,6 +73,14 @@
         <item name="android:textSize">80sp</item>
         <item name="android:gravity">center</item>
         <item name="fontFamily">@font/univia_pro</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
 </resources>

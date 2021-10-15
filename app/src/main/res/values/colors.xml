@@ -10,6 +10,7 @@
 
     <color name="main_background">#0A1229</color>
     <color name="grey">#202846</color>
+    <color name="grey_light">#525B7A</color>
     <color name="grey_dark">#171D38</color>
     <color name="blue">#284FDD</color>
 </resources>

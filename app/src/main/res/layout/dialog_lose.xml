@@ -16,10 +16,10 @@
         android:layout_marginTop="@dimen/margin_padding_size_20"
         android:layout_marginEnd="@dimen/margin_padding_size_20"
         android:gravity="center"
+        android:text="@string/game_lose_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/game_win_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDialogDescription"
@@ -36,14 +36,14 @@
         tools:text="@string/game_win_alcoholic_description" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/mbPositive"
+        android:id="@+id/btnCancelLoseDialog"
         style="@style/ButtonDialog"
         android:layout_width="wrap_content"
+        android:text="@string/game_cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDialogDescription"
-        tools:text="Cancel" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDialogDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

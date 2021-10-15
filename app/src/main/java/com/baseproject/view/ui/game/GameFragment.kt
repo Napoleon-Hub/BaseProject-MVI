@@ -14,8 +14,8 @@ import com.baseproject.domain.enums.SocialStatus
 import com.baseproject.utils.extentions.*
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.game.adapter.GameRecyclerViewAdapter
-import com.baseproject.view.ui.game.dialog.ResultGameDialogData
 import com.baseproject.view.ui.game.dialog.ResultGameDialogFragment
+import com.baseproject.view.ui.game.sheet.BottomSheetWinFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -95,9 +95,13 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         lifecycleScope.launchWhenStarted {
             viewModel.effect.collect {
                 when (it) {
-                    is GameContract.Effect.ShowResultDialog -> {
+                    GameContract.Effect.ShowLoseDialog -> {
                         countDownTimer?.cancel()
-                        showResultDialog(it.isWin)
+                        showLoseDialog()
+                    }
+                    GameContract.Effect.ShowWinBottomSheetDialog -> {
+                        countDownTimer?.cancel()
+                        showWinBottomSheetDialog()
                     }
                 }
             }
@@ -172,26 +176,22 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         return ("$minutesString:$secondsString")
     }
 
-    private fun showResultDialog(isWin: Boolean) {
-        val title = if (isWin) getString(R.string.game_win_title) else getString(R.string.game_lose_title)
+    private fun showLoseDialog() {
         val description = when (viewModel.getUserStatus()) {
-            SocialStatus.ALCOHOLIC -> {
-                if (isWin) getString(R.string.game_win_alcoholic_description)
-                else getString(R.string.game_lose_alcoholic_description)
-            }
-            SocialStatus.PREGNANT -> {
-                if (isWin) getString(R.string.game_win_pregnant_description)
-                else getString(R.string.game_lose_pregnant_description)
-            }
-            else -> {
-                if (isWin) getString(R.string.game_win_nazi_description)
-                else getString(R.string.game_lose_nazi_description)
-            }
+            SocialStatus.ALCOHOLIC -> getString(R.string.game_lose_alcoholic_description)
+            SocialStatus.PREGNANT -> getString(R.string.game_lose_pregnant_description)
+            else -> getString(R.string.game_lose_nazi_description)
         }
-        val positiveBtnText = getString(R.string.game_cancel)
+        ResultGameDialogFragment(description, this@GameFragment).show(childFragmentManager, null)
+    }
 
-        val dialog = ResultGameDialogFragment.newInstance(ResultGameDialogData(title, description, positiveBtnText))
-        dialog.show(childFragmentManager, null)
+    private fun showWinBottomSheetDialog() {
+        val description = when (viewModel.getUserStatus()) {
+            SocialStatus.ALCOHOLIC -> getString(R.string.game_win_alcoholic_description)
+            SocialStatus.PREGNANT -> getString(R.string.game_win_pregnant_description)
+            else -> getString(R.string.game_win_nazi_description)
+        }
+        BottomSheetWinFragment(description, this@GameFragment).show(childFragmentManager, null)
     }
 
     override fun onDismiss(p0: DialogInterface?) {

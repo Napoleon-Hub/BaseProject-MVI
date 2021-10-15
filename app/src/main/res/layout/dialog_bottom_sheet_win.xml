@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetDialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet_win">
+
+    <ImageView
+        android:id="@+id/ivWin"
+        android:layout_width="@dimen/game_bottom_sheet_image_size"
+        android:layout_height="@dimen/game_bottom_sheet_image_size"
+        android:layout_marginTop="@dimen/margin_padding_size_24"
+        android:src="@drawable/ic_timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWinTitle"
+        style="@style/TvStatsParams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_size_24"
+        android:gravity="center"
+        android:text="@string/game_win_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivWin" />
+
+    <TextView
+        android:id="@+id/tvWinDescription"
+        style="@style/TvGameStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_16"
+        android:layout_marginTop="@dimen/margin_padding_size_16"
+        android:layout_marginEnd="@dimen/margin_padding_size_16"
+        android:layout_marginBottom="78dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWinTitle"
+        tools:text="@string/game_win_alcoholic_description" />
+
+    <TextView
+        android:id="@+id/btnCancel"
+        style="@style/TvGameGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_size_16"
+        android:layout_marginBottom="@dimen/margin_padding_size_40"
+        android:text="@string/game_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWinDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

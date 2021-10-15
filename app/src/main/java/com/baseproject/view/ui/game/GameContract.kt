@@ -19,7 +19,8 @@ class GameContract {
     }
 
     sealed class Effect : UiEffect {
-        data class ShowResultDialog(val isWin: Boolean) : Effect()
+        object ShowLoseDialog : Effect()
+        object ShowWinBottomSheetDialog : Effect()
     }
 
 }

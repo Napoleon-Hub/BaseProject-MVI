@@ -30,7 +30,8 @@ class GameViewModel @Inject constructor(
     }
 
     private fun endGame(score: Int, isWin: Boolean) {
-        setEffect { GameContract.Effect.ShowResultDialog(isWin) }
+        if (isWin) setEffect { GameContract.Effect.ShowWinBottomSheetDialog }
+        else setEffect { GameContract.Effect.ShowLoseDialog }
         saveResult(score, isWin)
         updateUserExperience(isWin)
     }
