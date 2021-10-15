@@ -3,11 +3,11 @@
     <string name="app_name">BaseProject</string>
 
     <!-- User -->
-    <string name="user_stats">Статистика пользователя</string>
+    <string name="user_stats">Статистика\nпользователя</string>
     <string name="user_level">Уровень: %d</string>
     <string name="user_attempts">Попыток: %d</string>
     <string name="user_name">Никнейм: %s</string>
-    <string name="user_social_status">Социальный статус: %s</string>
+    <string name="user_social_status">Соц. статус: %s</string>
     <string name="user_score">Очки: %d</string>
     <string name="user_win">Победа</string>
     <string name="user_lose">Поражение</string>
@@ -16,7 +16,7 @@
     <!-- Settings -->
     <string name="settings">Настройки</string>
     <string name="settings_name">Никнейм*</string>
-    <string name="settings_social_status">Социальный статус:</string>
+    <string name="settings_social_status">Соц. статус:</string>
     <string name="settings_save">Сохранить</string>
     <string-array name="settings_social_status_array">
         <item>Нацист</item>
