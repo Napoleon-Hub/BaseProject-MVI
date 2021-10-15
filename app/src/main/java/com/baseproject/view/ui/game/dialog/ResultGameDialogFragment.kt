@@ -1,8 +1,6 @@
 package com.baseproject.view.ui.game.dialog
 
 import android.content.DialogInterface
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,13 +19,14 @@ class ResultGameDialogFragment(
 
     private var buttonListener: DialogInterface.OnDismissListener = listener
 
+    override fun getTheme() = R.style.DialogTheme
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DialogLoseBinding.bind(inflater.inflate(R.layout.dialog_lose, container))
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         return binding.root
     }
 
