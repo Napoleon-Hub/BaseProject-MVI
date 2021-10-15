@@ -21,7 +21,8 @@ def libraryVersions = [
         gsonVersion                  : '2.8.6',
         okHttpVersion                : '4.9.0',
         lifeCycleVersion             : '2.4.0-rc01',
-        coroutenesVersion            : '1.5.0'
+        coroutenesVersion            : '1.5.0',
+        leakCanaryVersion            : '2.7'
 
 ]
 
@@ -67,6 +68,7 @@ ext {
             lifecycleLiveData       : "androidx.lifecycle:lifecycle-livedata-ktx:${libraryVersions.lifeCycleVersion}",
             coroutinesCore          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libraryVersions.coroutenesVersion}",
             coroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libraryVersions.coroutenesVersion}",
+            leakCanary              : "com.squareup.leakcanary:leakcanary-android:${libraryVersions.leakCanaryVersion}"
 
     ]
 
