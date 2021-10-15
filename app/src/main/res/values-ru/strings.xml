@@ -22,11 +22,14 @@
         <item>Нацист</item>
         <item>Беременный</item>
         <item>Алкоголик</item>
+        <item>Лукашенко</item>
+        <item>Котик</item>
+        <item>На таблетках</item>
     </string-array>
 
     <!-- Game -->
     <string name="game_auto_lose">Сдаться</string>
-    <string name="game_rules">Нажимайте кнопки в верном порядке, чтобы победить</string>
+    <string name="game_rules">Нажимайте кнопки в верном порядке,\nчтобы победить</string>
     <string-array name="game_words_array">
         <item>один</item>
         <item>два</item>
@@ -42,10 +45,16 @@
     <string name="game_win_alcoholic_description">Ты конечно же победил, но ты не думал, что вместо того, чтобы играть в детскую игру лучше сходить в клуб анонимных алкоголиков и подлечиться?</string>
     <string name="game_win_pregnant_description">Это победа. Но если вдруг ты парень и у тебя социальный статус - Беременный, мой совет - сходи подлечись в Новинках, братишка</string>
     <string name="game_win_nazi_description">Повезло, что моя игра - это всего лишь нажимание кнопок в верном порядке. А если бы в моей игре была кнопка Начать Холокост, ты бы тоже нажал её, Нацик?</string>
+    <string name="game_win_lukashenka_description">Откуда у тебя силы, чтобы играть в эту игру и побеждать, старик. Я думал ты только на верталете с калашом летать умеешь</string>
+    <string name="game_win_kitty_description">КАК ТЫ ЭТО СДЕЛАЛ?? У ТЕБЯ ЖЕ ЛАПКИ!!</string>
+    <string name="game_win_on_pills_description">Печально, что эту игру еще не приравняли к спортивной дисциплине. Иначе бы за таблетки я раздавал бы баны по IP -_-</string>
     <string name="game_lose_title">Не сегодня, братишка :)</string>
     <string name="game_lose_alcoholic_description">Ты проиграл, но это не повод сразу браться за бутылку. И самое главное, не садись на неё!!</string>
     <string name="game_lose_pregnant_description">Я не знаю, что может быть хуже, проиграть в детской игре, в которой можно ничего не делать и победить через минуту или же быть беременным в 16. Как думаешь?</string>
     <string name="game_lose_nazi_description">Прогирал в 1945 и в детской игре тоже, да, Нацик?)</string>
+    <string name="game_lose_lukashenka_description">Я сделал эту игру сидя в бело-красно-белый носках, старик, так что тебе не выиграть!</string>
+    <string name="game_lose_kitty_description">Не расстраивайся, котенок, рано или поздно человечество самоуничтожится, и ты будешь победителем в игре на выживание, но не сегодня)</string>
+    <string name="game_lose_on_pills_description">Надеюсь, ты сейчас на таблетках от поноса, потому что ты обосрался</string>
     <string name="game_cancel">Закрыть</string>
 
     <!-- Errors -->

@@ -180,7 +180,10 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         val description = when (viewModel.getUserStatus()) {
             SocialStatus.ALCOHOLIC -> getString(R.string.game_lose_alcoholic_description)
             SocialStatus.PREGNANT -> getString(R.string.game_lose_pregnant_description)
-            else -> getString(R.string.game_lose_nazi_description)
+            SocialStatus.NAZI -> getString(R.string.game_lose_nazi_description)
+            SocialStatus.LUKASHENKA -> getString(R.string.game_lose_lukashenka_description)
+            SocialStatus.KITTY -> getString(R.string.game_lose_kitty_description)
+            else -> getString(R.string.game_lose_on_pills_description)
         }
         ResultGameDialogFragment(description, this@GameFragment).show(childFragmentManager, null)
     }
@@ -189,7 +192,10 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         val description = when (viewModel.getUserStatus()) {
             SocialStatus.ALCOHOLIC -> getString(R.string.game_win_alcoholic_description)
             SocialStatus.PREGNANT -> getString(R.string.game_win_pregnant_description)
-            else -> getString(R.string.game_win_nazi_description)
+            SocialStatus.NAZI -> getString(R.string.game_win_nazi_description)
+            SocialStatus.LUKASHENKA -> getString(R.string.game_win_lukashenka_description)
+            SocialStatus.KITTY -> getString(R.string.game_win_kitty_description)
+            else -> getString(R.string.game_win_on_pills_description)
         }
         BottomSheetWinFragment(description, this@GameFragment).show(childFragmentManager, null)
     }

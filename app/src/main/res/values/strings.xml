@@ -21,6 +21,9 @@
         <item>Nazi</item>
         <item>Pregnant</item>
         <item>Alcoholic</item>
+        <item>Lukashenka</item>
+        <item>Kitty</item>
+        <item>On pills</item>
     </string-array>
 
     <!-- Game -->
@@ -41,10 +44,16 @@
     <string name="game_win_alcoholic_description">You won, of course, but instead of playing you\'d better go Alcoholics Anonymous and get some medical treatment</string>
     <string name="game_win_pregnant_description">This is a victory, but if you are a pregnant guy, I advise you to see a doctor in Novinki.</string>
     <string name="game_win_nazi_description">It\'s good that my game is just button presses. If the game had a button to start a holocaust, would you press it, Nazi?</string>
+    <string name="game_win_lukashenka_description">Where did you get the strength to play this game and win, old man. I thought you only know how to fly on a helicopter with Kalash</string>
+    <string name="game_win_kitty_description">HOW DID YOU DO THAT?? YOU HAVE A PAWS !!</string>
+    <string name="game_win_on_pills_description">It is sad that this game has not yet been equated with a sports discipline. Otherwise, for pills, I would give bans by IP -_-</string>
     <string name="game_lose_title">Not today, bro:)</string>
     <string name="game_lose_alcoholic_description">You have lost, but that doesn\'t mean that you need to take up the bottle right away. And most importantly, don\'t sit on it !!</string>
     <string name="game_lose_pregnant_description">I don\'t know what could be worse, losing a child\'s game or getting pregnant at 16. What do you think?</string>
     <string name="game_lose_nazi_description">Lost 1945 and lost in a child\'s play, Nazi)</string>
+    <string name="game_lose_lukashenka_description">I made this game sitting in white-red-white socks, old man, so you can\'t win!</string>
+    <string name="game_lose_kitty_description">Don\'t be upset, Kitty, sooner or later humanity will self-destruct and you will be the winner in the survival game, but not today)</string>
+    <string name="game_lose_on_pills_description">Hope you\'re on diarrhea pills now because you fucked up</string>
     <string name="game_cancel">Cancel</string>
 
     <!-- Errors -->
