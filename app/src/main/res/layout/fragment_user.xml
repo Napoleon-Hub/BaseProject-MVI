@@ -28,7 +28,7 @@
         app:srcCompat="@drawable/ic_settings" />
 
     <TextView
-        android:id="@+id/tvLevel"
+        android:id="@+id/tvWins"
         style="@style/TvStatsParams"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLevel"
+        app:layout_constraintTop_toBottomOf="@+id/tvWins"
         tools:text="Attempts: 0" />
 
     <TextView

@@ -59,9 +59,9 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAutoLose"
+        android:id="@+id/btnGameStop"
         style="@style/ButtonStart"
-        android:text="@string/game_auto_lose"
+        android:text="@string/game_stop"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

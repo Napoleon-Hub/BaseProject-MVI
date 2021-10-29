@@ -23,13 +23,14 @@ class GameViewModel @Inject constructor(
     override fun handleEvent(event: GameContract.Event) {
         when (event) {
             is GameContract.Event.GameStarted -> setState { GameContract.State.StartGameState }
-            is GameContract.Event.OnAutoLoseClicked -> endGame(event.score, false)
-            is GameContract.Event.OnItemMissClick -> endGame(event.score, false)
-            is GameContract.Event.GameFinished -> endGame(event.score, true)
+            is GameContract.Event.OnAutoLoseClicked -> endGame(event.score)
+            is GameContract.Event.OnItemMissClick -> endGame(event.score)
+            is GameContract.Event.GameFinished -> endGame(event.score)
         }
     }
 
-    private fun endGame(score: Int, isWin: Boolean) {
+    private fun endGame(score: Int) {
+        val isWin = score >= WIN_SCORE
         if (isWin) setEffect { GameContract.Effect.ShowWinBottomSheetDialog }
         else setEffect { GameContract.Effect.ShowLoseDialog }
         saveResult(score, isWin)
@@ -44,10 +45,14 @@ class GameViewModel @Inject constructor(
     }
 
     private fun updateUserExperience(isWin: Boolean) = prefsEntity.apply {
-        if (isWin) level++
+        if (isWin) wins++
         attempts++
     }
 
     fun getUserStatus(): Enum<SocialStatus> = prefsEntity.status
+
+    companion object {
+        const val WIN_SCORE = 150
+    }
 
 }

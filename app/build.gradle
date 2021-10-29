@@ -95,6 +95,6 @@ dependencies {
     implementation appDependencies.coroutinesAndroid
 
     // LeakCanary
-    debugImplementation appDependencies.leakCanary
+    // debugImplementation appDependencies.leakCanary
 
 }

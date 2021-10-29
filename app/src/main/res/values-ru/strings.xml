@@ -4,7 +4,7 @@
 
     <!-- User -->
     <string name="user_stats">Статистика\nпользователя</string>
-    <string name="user_level">Уровень: %d</string>
+    <string name="user_wins">Побед: %d</string>
     <string name="user_attempts">Попыток: %d</string>
     <string name="user_name">Никнейм: %s</string>
     <string name="user_social_status">Соц. статус: %s</string>
@@ -28,8 +28,8 @@
     </string-array>
 
     <!-- Game -->
-    <string name="game_auto_lose">Сдаться</string>
-    <string name="game_rules">Нажимайте кнопки в верном порядке,\nчтобы победить</string>
+    <string name="game_stop">Остановиться</string>
+    <string name="game_rules">Нажимайте кнопки в верном порядке и наберите\n150 очков, чтобы победить</string>
     <string-array name="game_words_array">
         <item>один</item>
         <item>два</item>

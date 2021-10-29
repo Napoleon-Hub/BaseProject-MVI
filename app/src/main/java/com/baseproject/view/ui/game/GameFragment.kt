@@ -35,6 +35,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     private var correctWordsArray: Array<String>? = null
     private var randomWordsArray: Array<String>? = null
     private var countDownTimer: CountDownTimer? = null
+    private var timeLeft: Long = 27000L
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,7 +73,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     }
 
     override fun initSetOnClickListeners() = binding.run {
-        btnAutoLose.setOnClickListener(500) {
+        btnGameStop.setOnClickListener(500) {
             viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter))
         }
     }
@@ -86,7 +87,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
                     }
                     GameContract.State.StartGameState -> {
                         showGameViews()
-                        createCountDownTimer()
+                        recreateCountDownTimer()
                     }
                 }
             }
@@ -114,7 +115,11 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
             if (correctWordsArray!![wordCounter] == it) {
                 scoreCounter++
                 wordCounter++
-                if (wordCounter == 9) { updateWords() }
+                if (wordCounter == 9) {
+                    updateWords()
+                    countDownTimer?.cancel()
+                    recreateCountDownTimer()
+                }
             } else {
                 viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter))
             }
@@ -145,13 +150,14 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         timer.gone()
         tvCounter.visible()
         rvGameItems.visible()
-        btnAutoLose.visible()
+        btnGameStop.visible()
     }
 
-    private fun createCountDownTimer() {
-        countDownTimer = object : CountDownTimer(GAME_TIME, TICK_INTERVAL) {
+    private fun recreateCountDownTimer() {
+        countDownTimer = object : CountDownTimer(timeLeft + BONUS_INTERVAL, TICK_INTERVAL) {
             override fun onTick(millisUntilFinished: Long) {
                 binding.tvCounter.text = transformTimeToString(millisUntilFinished)
+                timeLeft = millisUntilFinished
             }
 
             override fun onFinish() {
@@ -160,6 +166,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         }.start()
     }
 
+    // Called magic numbers, don't do that, but I can)
     private fun transformTimeToString(millisUntilFinished: Long): String {
         val seconds: Int
         var minutesString = "00"
@@ -206,8 +213,8 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
 
     companion object {
         const val START_TIME = 3
-        const val GAME_TIME = 60000L
         const val TICK_INTERVAL = 1000L
+        const val BONUS_INTERVAL = 4000L
     }
 
 }

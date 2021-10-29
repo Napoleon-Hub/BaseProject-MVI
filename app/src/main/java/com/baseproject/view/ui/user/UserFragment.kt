@@ -79,7 +79,7 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
     }
 
     private fun initMutableFields() = binding.apply {
-        tvLevel.text = getString(R.string.user_level, preferences.level)
+        tvWins.text = getString(R.string.user_wins, preferences.wins)
         tvAttempts.text = getString(R.string.user_attempts, preferences.attempts)
         tvName.text = getString(R.string.user_name, preferences.name)
         tvStatus.text = getString(R.string.user_social_status, preferences.status.getStatusName())

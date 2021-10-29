@@ -3,7 +3,7 @@
 
     <!-- User -->
     <string name="user_stats">User statistics</string>
-    <string name="user_level">Level: %d</string>
+    <string name="user_wins">Wins: %d</string>
     <string name="user_attempts">Attempts: %d</string>
     <string name="user_name">Nickname: %s</string>
     <string name="user_social_status">Social Status: %s</string>
@@ -27,8 +27,8 @@
     </string-array>
 
     <!-- Game -->
-    <string name="game_auto_lose">Auto Lose</string>
-    <string name="game_rules">Press the buttons in the correct\n order to win</string>
+    <string name="game_stop">Stop the Game</string>
+    <string name="game_rules">Press the buttons in the correct\norder and get 150 scores to win</string>
     <string-array name="game_words_array">
         <item>one</item>
         <item>two</item>
