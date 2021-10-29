@@ -10,7 +10,9 @@ import com.baseproject.R
 import com.baseproject.databinding.DialogLoseBinding
 import com.baseproject.utils.extentions.setOnClickListener
 
-class ResultGameDialogFragment(
+class GameDialogFragment(
+    private val title: String? = null,
+    private val buttonText: String? = null,
     private val status: String,
     listener: DialogInterface.OnDismissListener
 ) : DialogFragment() {
@@ -36,6 +38,8 @@ class ResultGameDialogFragment(
     }
 
     private fun initUI() = binding.run {
+        if (title != null) tvDialogTitle.text = title
+        if (buttonText != null) btnCancelLoseDialog.text = buttonText
         tvDialogDescription.text = status
         btnCancelLoseDialog.setOnClickListener(500) { dialog?.dismiss() }
     }

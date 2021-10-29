@@ -93,7 +93,8 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
             ALCOHOLIC  -> socialStatusArray[2]
             LUKASHENKA -> socialStatusArray[3]
             KITTY      -> socialStatusArray[4]
-            else       -> socialStatusArray[5]
+            ON_PILLS   -> socialStatusArray[5]
+            else       -> socialStatusArray[6]
         }
     }
 

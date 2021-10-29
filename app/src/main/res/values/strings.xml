@@ -17,6 +17,9 @@
     <string name="settings_name">Nickname*</string>
     <string name="settings_social_status">Social status:</string>
     <string name="settings_save">Save</string>
+    <string name="settings_impostor_dialog_title">Impostor?</string>
+    <string name="settings_impostor_dialog_description">Something tells me that you are not Bogdan -_-. Don\'t try to fool me!</string>
+    <string name="settings_impostor_dialog_button">Run!</string>
     <string-array name="settings_social_status_array">
         <item>Nazi</item>
         <item>Pregnant</item>
@@ -24,6 +27,7 @@
         <item>Lukashenka</item>
         <item>Kitty</item>
         <item>On pills</item>
+        <item>Bogdan</item>
     </string-array>
 
     <!-- Game -->
@@ -47,6 +51,7 @@
     <string name="game_win_lukashenka_description">Where did you get the strength to play this game and win, old man. I thought you only know how to fly on a helicopter with Kalash</string>
     <string name="game_win_kitty_description">HOW DID YOU DO THAT?? YOU HAVE A PAWS !!</string>
     <string name="game_win_on_pills_description">It is sad that this game has not yet been equated with a sports discipline. Otherwise, for pills, I would give bans by IP -_-</string>
+    <string name="game_win_bogdan_description">It seems to me that you are not Bogdan -_-, he would never have scored so many scores, run the impostor!</string>
     <string name="game_lose_title">Not today, bro:)</string>
     <string name="game_lose_alcoholic_description">You have lost, but that doesn\'t mean that you need to take up the bottle right away. And most importantly, don\'t sit on it !!</string>
     <string name="game_lose_pregnant_description">I don\'t know what could be worse, losing a child\'s game or getting pregnant at 16. What do you think?</string>
@@ -54,6 +59,7 @@
     <string name="game_lose_lukashenka_description">I made this game sitting in white-red-white socks, old man, so you can\'t win!</string>
     <string name="game_lose_kitty_description">Don\'t be upset, Kitty, sooner or later humanity will self-destruct and you will be the winner in the survival game, but not today)</string>
     <string name="game_lose_on_pills_description">Hope you\'re on diarrhea pills now because you fucked up</string>
+    <string name="game_lose_bogdan_description">Okay, let\'s believe that you are Bogdan, he would never have won this game</string>
     <string name="game_cancel">Cancel</string>
 
     <!-- Errors -->

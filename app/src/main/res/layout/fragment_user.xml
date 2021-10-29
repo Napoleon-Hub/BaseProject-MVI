@@ -5,92 +5,119 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/TvStatsTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_size_12"
-        android:text="@string/user_stats"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btnSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_size_12"
         android:layout_marginEnd="@dimen/margin_padding_size_12"
+        android:background="@drawable/bg_result_game_dialog"
         android:padding="@dimen/margin_padding_size_8"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_settings" />
 
-    <TextView
-        android:id="@+id/tvWins"
-        style="@style/TvStatsParams"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:text="Level: 0" />
-
-    <TextView
-        android:id="@+id/tvAttempts"
-        style="@style/TvStatsParams"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWins"
-        tools:text="Attempts: 0" />
-
-    <TextView
-        android:id="@+id/tvName"
-        style="@style/TvStatsParams"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAttempts"
-        tools:text="Nickname: Bobby" />
-
-    <TextView
-        android:id="@+id/tvStatus"
-        style="@style/TvStatsParams"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName"
-        tools:text="Social status: Loser" />
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvUser"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/margin_padding_size_16"
+        android:layout_marginStart="@dimen/margin_padding_size_30"
+        android:layout_marginTop="@dimen/margin_padding_size_16"
+        android:layout_marginEnd="@dimen/margin_padding_size_30"
+        android:layout_marginBottom="@dimen/margin_padding_size_30"
+        android:elevation="@dimen/margin_padding_size_3"
+        app:cardBackgroundColor="@color/grey_dark"
+        app:cardCornerRadius="@dimen/margin_padding_size_10"
         app:layout_constraintBottom_toTopOf="@+id/btnStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStatus">
+        app:layout_constraintTop_toBottomOf="@+id/btnSettings">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvGamesStatistics"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_game_statistics" />
+            android:layout_height="match_parent">
 
-    </androidx.core.widget.NestedScrollView>
+            <TextView
+                android:id="@+id/textView"
+                style="@style/TvStatsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_12"
+                android:text="@string/user_stats"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvWins"
+                style="@style/TvStatsParams"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:text="Wins: 0" />
+
+            <TextView
+                android:id="@+id/tvAttempts"
+                style="@style/TvStatsParams"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWins"
+                tools:text="Attempts: 0" />
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/TvStatsParams"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAttempts"
+                tools:text="Nickname: Bobby" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                style="@style/TvStatsParams"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                tools:text="Social status: Loser" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/margin_padding_size_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvGamesStatistics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_game_statistics" />
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStart"
         style="@style/ButtonStart"
         android:text="@string/user_start_game"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/cvUser"
+        app:layout_constraintStart_toStartOf="@+id/cvUser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

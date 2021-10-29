@@ -1,5 +1,6 @@
 package com.baseproject.view.ui.settings
 
+import com.baseproject.domain.enums.SocialStatus
 import com.baseproject.view.base.BaseViewModel
 
 class SettingsViewModel : BaseViewModel<SettingsContract.Event, SettingsContract.State, SettingsContract.Effect>()  {
@@ -10,11 +11,17 @@ class SettingsViewModel : BaseViewModel<SettingsContract.Event, SettingsContract
 
     override fun handleEvent(event: SettingsContract.Event) {
         when (event) {
-            SettingsContract.Event.OnSaveClicked -> {
-                setEffect { SettingsContract.Effect.SaveSettings }
+            is SettingsContract.Event.OnSaveClicked -> {
+                if (event.status == SocialStatus.BOGDAN)
+                    setEffect { SettingsContract.Effect.ImpostorDialog }
+                else
+                    setEffect { SettingsContract.Effect.SaveSettings }
             }
-            SettingsContract.Event.OnBackClicked -> {
+            is SettingsContract.Event.OnBackClicked -> {
                 setEffect { SettingsContract.Effect.NavigateUser }
+            }
+            SettingsContract.Event.DialogDismiss -> {
+                setEffect { SettingsContract.Effect.SaveSettings }
             }
         }
     }

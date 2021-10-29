@@ -1,5 +1,6 @@
 package com.baseproject.view.ui.settings
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -11,12 +12,13 @@ import com.baseproject.databinding.FragmentSettingsBinding
 import com.baseproject.domain.enums.SocialStatus
 import com.baseproject.utils.extentions.setOnClickListener
 import com.baseproject.view.base.BaseFragment
+import com.baseproject.view.ui.game.dialog.GameDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
+class SettingsFragment : BaseFragment(R.layout.fragment_settings), DialogInterface.OnDismissListener {
 
     private lateinit var binding: FragmentSettingsBinding
 
@@ -34,7 +36,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     override fun initSetOnClickListeners() = binding.run {
         btnSave.setOnClickListener(500) {
-            viewModel.setEvent(SettingsContract.Event.OnSaveClicked)
+            viewModel.setEvent(SettingsContract.Event.OnSaveClicked(idSocialStatusToEnum()))
         }
         btnBack.setOnClickListener(500) {
             viewModel.setEvent(SettingsContract.Event.OnBackClicked)
@@ -61,6 +63,9 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                     SettingsContract.Effect.NavigateUser -> {
                         navigateBack()
                     }
+                    SettingsContract.Effect.ImpostorDialog -> {
+                        showImpostorDialog()
+                    }
                 }
             }
         }
@@ -82,7 +87,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         spinner.setSelection(preferences.status.ordinal)
     }
 
-
     private fun saveSettingsFields() = preferences.run {
         name = binding.etName.text.toString()
         status = idSocialStatusToEnum()
@@ -95,8 +99,23 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
             2    -> SocialStatus.ALCOHOLIC
             3    -> SocialStatus.LUKASHENKA
             4    -> SocialStatus.KITTY
-            else -> SocialStatus.ON_PILLS
+            5    -> SocialStatus.ON_PILLS
+            else -> SocialStatus.BOGDAN
         }
+    }
+
+    private fun showImpostorDialog() {
+        val description = getString(R.string.settings_impostor_dialog_description)
+        GameDialogFragment(
+            title = getString(R.string.settings_impostor_dialog_title),
+            buttonText = getString(R.string.settings_impostor_dialog_button),
+            status = description,
+            listener =  this@SettingsFragment
+        ).show(childFragmentManager, null)
+    }
+
+    override fun onDismiss(dialog: DialogInterface?) {
+        viewModel.setEvent(SettingsContract.Event.DialogDismiss)
     }
 
 

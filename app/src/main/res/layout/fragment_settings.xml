@@ -42,6 +42,7 @@
         android:paddingEnd="@dimen/margin_padding_size_30"
         android:paddingBottom="@dimen/margin_padding_size_16"
         android:singleLine="true"
+        android:elevation="@dimen/margin_padding_size_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -52,6 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_padding_size_4"
+        android:layout_marginTop="@dimen/margin_padding_size_16"
         android:text="@string/settings_social_status"
         app:layout_constraintStart_toStartOf="@+id/etName"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
@@ -61,6 +63,7 @@
         style="@style/SpinnerTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="@dimen/margin_padding_size_3"
         android:layout_marginStart="@dimen/margin_padding_size_16"
         app:layout_constraintBottom_toBottomOf="@+id/tvStatus"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -72,7 +75,7 @@
         style="@style/ButtonStart"
         android:text="@string/settings_save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/etName"
+        app:layout_constraintStart_toStartOf="@+id/etName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

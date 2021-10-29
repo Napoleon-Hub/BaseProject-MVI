@@ -18,6 +18,9 @@
     <string name="settings_name">Никнейм*</string>
     <string name="settings_social_status">Соц. статус:</string>
     <string name="settings_save">Сохранить</string>
+    <string name="settings_impostor_dialog_title">Самозванец?</string>
+    <string name="settings_impostor_dialog_description">Что-то мне подсказывает, что ты не Богдан -_- . Не пытайся обмануть меня!</string>
+    <string name="settings_impostor_dialog_button">Бежать!</string>
     <string-array name="settings_social_status_array">
         <item>Нацист</item>
         <item>Беременный</item>
@@ -25,6 +28,7 @@
         <item>Лукашенко</item>
         <item>Котик</item>
         <item>На таблетках</item>
+        <item>Богдан</item>
     </string-array>
 
     <!-- Game -->
@@ -48,6 +52,7 @@
     <string name="game_win_lukashenka_description">Откуда у тебя силы, чтобы играть в эту игру и побеждать, старик. Я думал ты только на верталете с калашом летать умеешь</string>
     <string name="game_win_kitty_description">КАК ТЫ ЭТО СДЕЛАЛ?? У ТЕБЯ ЖЕ ЛАПКИ!!</string>
     <string name="game_win_on_pills_description">Печально, что эту игру еще не приравняли к спортивной дисциплине. Иначе бы за таблетки я раздавал бы баны по IP -_-</string>
+    <string name="game_win_bogdan_description">Мне кажется, что ты не Богдан -_-, он никогда бы не набрал столько очков, беги самозванец!</string>
     <string name="game_lose_title">Не сегодня, братишка :)</string>
     <string name="game_lose_alcoholic_description">Ты проиграл, но это не повод сразу браться за бутылку. И самое главное, не садись на неё!!</string>
     <string name="game_lose_pregnant_description">Я не знаю, что может быть хуже, проиграть в детской игре, в которой можно ничего не делать и победить через минуту или же быть беременным в 16. Как думаешь?</string>
@@ -55,6 +60,7 @@
     <string name="game_lose_lukashenka_description">Я сделал эту игру сидя в бело-красно-белый носках, старик, так что тебе не выиграть!</string>
     <string name="game_lose_kitty_description">Не расстраивайся, котенок, рано или поздно человечество самоуничтожится, и ты будешь победителем в игре на выживание, но не сегодня)</string>
     <string name="game_lose_on_pills_description">Надеюсь, ты сейчас на таблетках от поноса, потому что ты обосрался</string>
+    <string name="game_lose_bogdan_description">Окей, поверим, что ты Богдан, он никогда бы не выиграл в эту игру</string>
     <string name="game_cancel">Закрыть</string>
 
     <!-- Errors -->
