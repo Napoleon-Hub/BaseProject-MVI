@@ -90,11 +90,11 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     private fun idSocialStatusToEnum(): Enum<SocialStatus> {
         return when (binding.spinner.selectedItemPosition) {
-            0 -> SocialStatus.NAZI
-            1 -> SocialStatus.PREGNANT
-            2 -> SocialStatus.ALCOHOLIC
-            3 -> SocialStatus.LUKASHENKA
-            4 -> SocialStatus.KITTY
+            0    -> SocialStatus.NAZI
+            1    -> SocialStatus.PREGNANT
+            2    -> SocialStatus.ALCOHOLIC
+            3    -> SocialStatus.LUKASHENKA
+            4    -> SocialStatus.KITTY
             else -> SocialStatus.ON_PILLS
         }
     }

@@ -8,12 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.baseproject.R
 import com.baseproject.data.prefs.PrefsEntity
 import com.baseproject.databinding.FragmentUserBinding
+import com.baseproject.domain.enums.SocialStatus
+import com.baseproject.domain.enums.SocialStatus.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import com.baseproject.utils.extentions.setOnClickListener
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.user.adapter.UserRecyclerViewAdapter
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class UserFragment : BaseFragment(R.layout.fragment_user) {
@@ -79,7 +82,19 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
         tvLevel.text = getString(R.string.user_level, preferences.level)
         tvAttempts.text = getString(R.string.user_attempts, preferences.attempts)
         tvName.text = getString(R.string.user_name, preferences.name)
-        tvStatus.text = getString(R.string.user_social_status, preferences.status.toString())
+        tvStatus.text = getString(R.string.user_social_status, preferences.status.getStatusName())
+    }
+
+    private fun Enum<SocialStatus>.getStatusName(): String {
+        val socialStatusArray = resources.getStringArray(R.array.settings_social_status_array)
+        return when(this) {
+            NAZI       -> socialStatusArray[0]
+            PREGNANT   -> socialStatusArray[1]
+            ALCOHOLIC  -> socialStatusArray[2]
+            LUKASHENKA -> socialStatusArray[3]
+            KITTY      -> socialStatusArray[4]
+            else       -> socialStatusArray[5]
+        }
     }
 
 }
