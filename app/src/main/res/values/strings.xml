@@ -32,7 +32,7 @@
 
     <!-- Game -->
     <string name="game_stop">Stop the Game</string>
-    <string name="game_rules">Press the buttons in the correct\norder and get 150 scores to win</string>
+    <string name="game_rules">Press the buttons in the correct\norder and get 130 scores to win</string>
     <string-array name="game_words_array">
         <item>one</item>
         <item>two</item>

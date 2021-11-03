@@ -39,7 +39,7 @@
         <item name="android:background">@drawable/bg_gray_rounded</item>
     </style>
 
-    <style name="SpinnerText">
+    <style name="SpinnerText" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
         <item name="android:fontFamily">@font/univia_pro_italic</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>

@@ -26,6 +26,10 @@ abstract class BaseViewModel<Event : UiEvent, State : UiState, Effect : UiEffect
     private val _event : MutableSharedFlow<Event> = MutableSharedFlow()
     private val event = _event.asSharedFlow()
 
+    /**
+     * We use channel for one-time events,
+     * because State and Shared flow safe state
+     */
     private val _effect : Channel<Effect> = Channel()
     val effect = _effect.receiveAsFlow()
 

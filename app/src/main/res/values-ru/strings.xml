@@ -33,7 +33,7 @@
 
     <!-- Game -->
     <string name="game_stop">Остановиться</string>
-    <string name="game_rules">Нажимайте кнопки в верном порядке и наберите\n150 очков, чтобы победить</string>
+    <string name="game_rules">Нажимайте кнопки в верном порядке и наберите\n130 очков, чтобы победить</string>
     <string-array name="game_words_array">
         <item>один</item>
         <item>два</item>

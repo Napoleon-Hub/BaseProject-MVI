@@ -20,7 +20,7 @@ class SettingsViewModel : BaseViewModel<SettingsContract.Event, SettingsContract
             is SettingsContract.Event.OnBackClicked -> {
                 setEffect { SettingsContract.Effect.NavigateUser }
             }
-            SettingsContract.Event.DialogDismiss -> {
+            is SettingsContract.Event.DialogDismiss -> {
                 setEffect { SettingsContract.Effect.SaveSettings }
             }
         }

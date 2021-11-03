@@ -10,15 +10,18 @@ import com.baseproject.R
 import com.baseproject.data.prefs.PrefsEntity
 import com.baseproject.databinding.FragmentSettingsBinding
 import com.baseproject.domain.enums.SocialStatus
+import com.baseproject.utils.extentions.launchedWhenStarted
 import com.baseproject.utils.extentions.setOnClickListener
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.game.dialog.GameDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingsFragment : BaseFragment(R.layout.fragment_settings), DialogInterface.OnDismissListener {
+class SettingsFragment : BaseFragment(R.layout.fragment_settings),
+    DialogInterface.OnDismissListener {
 
     private lateinit var binding: FragmentSettingsBinding
 
@@ -32,7 +35,9 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings), DialogInterfa
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun initUI() { initSpinner() }
+    override fun initUI() {
+        initSpinner()
+    }
 
     override fun initSetOnClickListeners() = binding.run {
         btnSave.setOnClickListener(500) {
@@ -43,18 +48,19 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings), DialogInterfa
         }
     }
 
+    // Way to process data with extensions
     override fun initObservers() {
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.uiState.collect {
+        viewModel.uiState
+            .onEach {
                 when (it) {
                     SettingsContract.State.InitialState -> initMutableFields()
                 }
             }
-        }
+            .launchedWhenStarted(lifecycleScope)
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.effect.collect {
+        viewModel.effect
+            .onEach {
                 when (it) {
                     SettingsContract.Effect.SaveSettings -> {
                         saveSettingsFields()
@@ -68,7 +74,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings), DialogInterfa
                     }
                 }
             }
-        }
+            .launchedWhenStarted(lifecycleScope)
     }
 
     private fun initSpinner() {
@@ -94,12 +100,12 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings), DialogInterfa
 
     private fun idSocialStatusToEnum(): Enum<SocialStatus> {
         return when (binding.spinner.selectedItemPosition) {
-            0    -> SocialStatus.NAZI
-            1    -> SocialStatus.PREGNANT
-            2    -> SocialStatus.ALCOHOLIC
-            3    -> SocialStatus.LUKASHENKA
-            4    -> SocialStatus.KITTY
-            5    -> SocialStatus.ON_PILLS
+            0 -> SocialStatus.NAZI
+            1 -> SocialStatus.PREGNANT
+            2 -> SocialStatus.ALCOHOLIC
+            3 -> SocialStatus.LUKASHENKA
+            4 -> SocialStatus.KITTY
+            5 -> SocialStatus.ON_PILLS
             else -> SocialStatus.BOGDAN
         }
     }
@@ -110,7 +116,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings), DialogInterfa
             title = getString(R.string.settings_impostor_dialog_title),
             buttonText = getString(R.string.settings_impostor_dialog_button),
             status = description,
-            listener =  this@SettingsFragment
+            listener = this@SettingsFragment
         ).show(childFragmentManager, null)
     }
 

@@ -52,7 +52,7 @@ class GameViewModel @Inject constructor(
     fun getUserStatus(): Enum<SocialStatus> = prefsEntity.status
 
     companion object {
-        const val WIN_SCORE = 150
+        const val WIN_SCORE = 130
     }
 
 }
