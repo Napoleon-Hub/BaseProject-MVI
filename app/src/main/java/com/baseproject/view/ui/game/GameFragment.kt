@@ -10,14 +10,18 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.baseproject.R
 import com.baseproject.databinding.FragmentGameBinding
+import com.baseproject.domain.enums.Difficulty
 import com.baseproject.domain.enums.SocialStatus
+import com.baseproject.utils.WIN_SCORE
 import com.baseproject.utils.extentions.*
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.game.adapter.GameRecyclerViewAdapter
+import com.baseproject.view.ui.game.audio.GameAudioPlayer
 import com.baseproject.view.ui.game.dialog.GameDialogFragment
 import com.baseproject.view.ui.game.sheet.BottomSheetWinFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDismissListener {
@@ -25,6 +29,9 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     private lateinit var binding: FragmentGameBinding
 
     private val viewModel: GameViewModel by viewModels()
+
+    @Inject
+    lateinit var mediaPlayer: GameAudioPlayer
 
     private val adapter by lazy { GameRecyclerViewAdapter() }
 
@@ -36,6 +43,8 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     private var randomWordsArray: Array<String>? = null
     private var countDownTimer: CountDownTimer? = null
     private var timeLeft: Long = 27000L
+    private var isSoundStarted = false
+    private var bonusTime: Long = BONUS_INTERVAL_WEAKLING
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,13 +56,20 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (isSoundStarted) {
+            mediaPlayer.resume()
+        } else isSoundStarted = true
+    }
+
     override fun onResume() {
         super.onResume()
         backPressedCallback = requireActivity()
             .onBackPressedDispatcher
             .addCallback {
                 if (viewModel.uiState.value != GameContract.State.PreparationGameState)
-                viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter))
+                viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter, resources))
                 else navigateBack()
             }
     }
@@ -63,19 +79,15 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         backPressedCallback?.remove()
     }
 
+    override fun onStop() {
+        super.onStop()
+        mediaPlayer.pause()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         countDownTimer?.cancel()
-    }
-
-    override fun initUI() {
-        setupGameRecyclerView()
-    }
-
-    override fun initSetOnClickListeners() = binding.run {
-        btnGameStop.setOnClickListener(500) {
-            viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter))
-        }
+        mediaPlayer.reset()
     }
 
     override fun initObservers() {
@@ -86,8 +98,12 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
                         startTimer()
                     }
                     GameContract.State.StartGameState -> {
+                        if (viewModel.difficulty == Difficulty.TERMINATOR) bonusTime = BONUS_INTERVAL_TERMINATOR
+                        initUI()
+                        initSetOnClickListeners()
                         showGameViews()
                         recreateCountDownTimer()
+                        mediaPlayer.playMusic()
                     }
                 }
             }
@@ -98,15 +114,42 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
                 when (it) {
                     GameContract.Effect.ShowLoseDialog -> {
                         countDownTimer?.cancel()
+                        mediaPlayer.playLosePhrase()
                         showLoseDialog()
                     }
                     GameContract.Effect.ShowWinBottomSheetDialog -> {
                         countDownTimer?.cancel()
+                        mediaPlayer.playWinPhrase()
                         showWinBottomSheetDialog()
+                    }
+                    GameContract.Effect.ShowAchieveToast -> {
+                        toast(R.string.achievements_toast_text)
                     }
                 }
             }
         }
+    }
+
+    override fun initUI() {
+        setupGameRecyclerView()
+    }
+
+    override fun initSetOnClickListeners() = binding.run {
+        btnGameStop.setOnClickListener(500) {
+            viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter, resources))
+        }
+    }
+
+    private fun startTimer() = binding.run {
+        timer.apply {
+            onFinished = ::onTimerFinish
+            start(START_TIME)
+        }
+        tvRules.text = getString(R.string.game_rules, WIN_SCORE)
+    }
+
+    private fun onTimerFinish() {
+        viewModel.setEvent(GameContract.Event.GameStarted)
     }
 
     private fun setupGameRecyclerView() {
@@ -121,7 +164,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
                     recreateCountDownTimer()
                 }
             } else {
-                viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter))
+                viewModel.setEvent(GameContract.Event.OnAutoLoseClicked(scoreCounter, resources))
             }
         }
         adapter.submitList(randomWordsArray?.toList())
@@ -134,17 +177,6 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         adapter.notifyItemRangeChanged(0, 9)
     }
 
-    private fun startTimer() {
-        binding.timer.apply {
-            onFinished = ::onTimerFinish
-            start(START_TIME)
-        }
-    }
-
-    private fun onTimerFinish() {
-        viewModel.setEvent(GameContract.Event.GameStarted)
-    }
-
     private fun showGameViews() = binding.run {
         tvRules.gone()
         timer.gone()
@@ -154,14 +186,14 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     }
 
     private fun recreateCountDownTimer() {
-        countDownTimer = object : CountDownTimer(timeLeft + BONUS_INTERVAL, TICK_INTERVAL) {
+        countDownTimer = object : CountDownTimer(timeLeft + bonusTime, TICK_INTERVAL) {
             override fun onTick(millisUntilFinished: Long) {
                 binding.tvCounter.text = transformTimeToString(millisUntilFinished)
                 timeLeft = millisUntilFinished
             }
 
             override fun onFinish() {
-                viewModel.setEvent(GameContract.Event.GameFinished(scoreCounter))
+                viewModel.setEvent(GameContract.Event.GameFinished(scoreCounter, resources))
             }
         }.start()
     }
@@ -184,7 +216,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     }
 
     private fun showLoseDialog() {
-        val description = when (viewModel.getUserStatus()) {
+        val description = when (viewModel.status) {
             SocialStatus.ALCOHOLIC  -> getString(R.string.game_lose_alcoholic_description)
             SocialStatus.PREGNANT   -> getString(R.string.game_lose_pregnant_description)
             SocialStatus.NAZI       -> getString(R.string.game_lose_nazi_description)
@@ -197,7 +229,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     }
 
     private fun showWinBottomSheetDialog() {
-        val description = when (viewModel.getUserStatus()) {
+        val description = when (viewModel.status) {
             SocialStatus.ALCOHOLIC  -> getString(R.string.game_win_alcoholic_description)
             SocialStatus.PREGNANT   -> getString(R.string.game_win_pregnant_description)
             SocialStatus.NAZI       -> getString(R.string.game_win_nazi_description)
@@ -209,14 +241,13 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
         BottomSheetWinFragment(description, this@GameFragment).show(childFragmentManager, null)
     }
 
-    override fun onDismiss(dialog: DialogInterface?) {
-        navigateBack()
-    }
+    override fun onDismiss(dialog: DialogInterface?) { navigateBack() }
 
     companion object {
         const val START_TIME = 3
         const val TICK_INTERVAL = 1000L
-        const val BONUS_INTERVAL = 4000L
+        const val BONUS_INTERVAL_WEAKLING = 4000L
+        const val BONUS_INTERVAL_TERMINATOR = 3000L
     }
 
 }

@@ -20,12 +20,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/game_rules"
         app:layout_constraintBottom_toTopOf="@+id/timer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.65"
+        tools:text="Press the buttons in the correct\norder and get 110 scores to win" />
 
     <TextView
         android:id="@+id/tvCounter"

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="@dimen/margin_padding_size_4"
+    android:layout_marginBottom="@dimen/margin_padding_size_4"
+    android:background="@drawable/bg_gray_rounded"
+    android:elevation="@dimen/margin_padding_size_3">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivAchievement"
+        android:layout_width="90dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/margin_padding_size_20"
+        android:background="@drawable/bg_result_game_dialog"
+        android:padding="@dimen/margin_padding_size_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_question" />
+
+    <TextView
+        android:id="@+id/tvAchievementTitle"
+        style="@style/TvGameStats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_16"
+        android:layout_marginTop="@dimen/margin_padding_size_12"
+        android:layout_marginEnd="@dimen/margin_padding_size_16"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivAchievement"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Враг народа" />
+
+    <TextView
+        android:id="@+id/tvAchievementDescription"
+        style="@style/TvGameStats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_16"
+        android:layout_marginEnd="@dimen/margin_padding_size_16"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivAchievement"
+        app:layout_constraintTop_toBottomOf="@+id/tvAchievementTitle"
+        app:layout_constraintVertical_bias="0"
+        tools:text="Победить, играя за диктатора" />
+
+    <View
+        android:id="@+id/viewNotReceive"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/gradient_achievement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

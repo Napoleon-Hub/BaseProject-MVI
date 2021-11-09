@@ -4,23 +4,27 @@
 
     <!-- User -->
     <string name="user_stats">Статистика\nпользователя</string>
-    <string name="user_wins">Побед: %d</string>
+    <string name="user_record">Рекорд: %d</string>
     <string name="user_attempts">Попыток: %d</string>
-    <string name="user_name">Никнейм: %s</string>
     <string name="user_social_status">Соц. статус: %s</string>
-    <string name="user_score">Очки: %d</string>
+    <string name="user_score">%s: %d</string>
     <string name="user_win">Победа</string>
     <string name="user_lose">Поражение</string>
     <string name="user_start_game">Начать</string>
 
     <!-- Settings -->
     <string name="settings">Настройки</string>
-    <string name="settings_name">Никнейм*</string>
     <string name="settings_social_status">Соц. статус:</string>
+    <string name="settings_difficulty">Сложность:</string>
+    <string name="settings_truth">На тусовках не против\n подпевать песне Моргенштерна\n - ПОСОСИ</string>
     <string name="settings_save">Сохранить</string>
     <string name="settings_impostor_dialog_title">Самозванец?</string>
     <string name="settings_impostor_dialog_description">Что-то мне подсказывает, что ты не Богдан -_- . Не пытайся обмануть меня!</string>
     <string name="settings_impostor_dialog_button">Бежать!</string>
+    <string name="settings_warning_dialog_title">Предупреждение</string>
+    <string name="settings_warning_dialog_description">На этой сложности ты будешь получать меньше добавочного времени после прохождения каждого цикла!
+        Если ты победишь на этой сложности, я допишу твое имя в библию как святого</string>
+    <string name="settings_warning_dialog_button">Была не была</string>
     <string-array name="settings_social_status_array">
         <item>Нацист</item>
         <item>Беременный</item>
@@ -30,10 +34,14 @@
         <item>На таблетках</item>
         <item>Богдан</item>
     </string-array>
+    <string-array name="settings_difficulty_array">
+        <item>Слабак</item>
+        <item>Терминатор</item>
+    </string-array>
 
     <!-- Game -->
     <string name="game_stop">Остановиться</string>
-    <string name="game_rules">Нажимайте кнопки в верном порядке и наберите\n130 очков, чтобы победить</string>
+    <string name="game_rules">Нажимайте кнопки в верном порядке и наберите\n%d очков, чтобы победить</string>
     <string-array name="game_words_array">
         <item>один</item>
         <item>два</item>
@@ -62,6 +70,32 @@
     <string name="game_lose_on_pills_description">Надеюсь, ты сейчас на таблетках от поноса, потому что ты обосрался</string>
     <string name="game_lose_bogdan_description">Окей, поверим, что ты Богдан, он никогда бы не выиграл в эту игру</string>
     <string name="game_cancel">Закрыть</string>
+
+    <!--Achievements -->
+    <string name="achievements">Достижения</string>
+    <string name="achievements_nazi_title">Холокост? Не, не слышал</string>
+    <string name="achievements_nazi_description">Победить на высокой сложности, играя за чувака со свастикой на лбу</string>
+    <string name="achievements_pregnant_title">Беременна в 16</string>
+    <string name="achievements_pregnant_description">Победить на высокой сложности, и стать яжматерью</string>
+    <string name="achievements_alcoholic_title">Не просыхая</string>
+    <string name="achievements_alcoholic_description">Победить на высокой сложности, будучи под градусом</string>
+    <string name="achievements_lukashenka_title">Враг народа</string>
+    <string name="achievements_lukashenka_description">Победить на высокой сложности, играя за диктатора</string>
+    <string name="achievements_kitty_title">У меня лапки</string>
+    <string name="achievements_kitty_description">Победить на высокой сложности, будучи мягким и пушистым</string>
+    <string name="achievements_on_pills_title">Не прошел допинг-тест</string>
+    <string name="achievements_on_pills_description">Победить на высокой сложности, играя в психбольнице на таблетках</string>
+    <string name="achievements_bogdan_title">Сын маминой подруги</string>
+    <string name="achievements_bogdan_description">Стань успешным</string>
+    <string name="achievements_loser_title">Я просто посмотреть</string>
+    <string name="achievements_loser_description">Проиграть с позором</string>
+    <string name="achievements_truth_title">Сказанного не вернешь</string>
+    <string name="achievements_truth_description">Признай правду и правда останется с тобой навсегда</string>
+    <string name="achievements_dialog_be_cool_title">Везёт сильнейшим</string>
+    <string name="achievements_dialog_be_cool_description">Говорят, если получить все ачивки в этой игре, то сможете ливнуть из компании.
+    Ну или же это просто байт, чтобы завтавить тебя играть?</string>
+    <string name="achievements_dialog_be_cool_button">Я спасусь!</string>
+    <string name="achievements_toast_text">У вас новое достижение!</string>
 
     <!-- Errors -->
     <string name="generic_error">Что-то пошло не так, пожалуйста повторите попытку позже.</string>

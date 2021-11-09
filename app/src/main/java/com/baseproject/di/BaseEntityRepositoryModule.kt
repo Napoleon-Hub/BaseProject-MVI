@@ -21,6 +21,6 @@ abstract class BaseEntityRepositoryModule {
     companion object {
 
         @Provides
-        fun provideTrainingDaysDao(db: BaseRoomDatabase) = db.entitiesDao()
+        fun provideBaseEntitiesDao(db: BaseRoomDatabase) = db.entitiesDao()
     }
 }

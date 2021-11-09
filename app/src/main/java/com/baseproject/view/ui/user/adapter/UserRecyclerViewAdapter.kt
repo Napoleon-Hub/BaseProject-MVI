@@ -25,7 +25,11 @@ class UserRecyclerViewAdapter :
     inner class ItemViewHolder(private val binding: ItemGameStatisticsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BaseEntity) = with(itemView) {
-            binding.tvScore.text = context.getString(R.string.user_score, item.score)
+            binding.tvScore.text = context.getString(
+                R.string.user_score,
+                resources.getStringArray(R.array.settings_difficulty_array)[item.difficulty],
+                item.score
+            )
             binding.tvResult.text = if (item.isWin) context.getString(R.string.user_win)
             else context.getString(R.string.user_lose)
         }

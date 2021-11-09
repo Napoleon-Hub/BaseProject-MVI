@@ -17,6 +17,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_settings" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnAchievements"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_padding_size_12"
+        android:background="@drawable/bg_result_game_dialog"
+        android:padding="@dimen/margin_padding_size_8"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSettings"
+        app:srcCompat="@drawable/ic_cup" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvUser"
         android:layout_width="match_parent"
@@ -49,7 +61,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvWins"
+                android:id="@+id/tvRecord"
                 style="@style/TvStatsParams"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -65,18 +77,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvWins"
+                app:layout_constraintTop_toBottomOf="@+id/tvRecord"
                 tools:text="Attempts: 0" />
-
-            <TextView
-                android:id="@+id/tvName"
-                style="@style/TvStatsParams"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvAttempts"
-                tools:text="Nickname: Bobby" />
 
             <TextView
                 android:id="@+id/tvStatus"
@@ -85,7 +87,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                app:layout_constraintTop_toBottomOf="@+id/tvAttempts"
                 tools:text="Social status: Loser" />
 
             <androidx.core.widget.NestedScrollView

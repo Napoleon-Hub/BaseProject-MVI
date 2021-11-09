@@ -1,13 +1,24 @@
 package com.baseproject.view.ui.user
 
+import android.content.res.Resources
+import androidx.lifecycle.viewModelScope
+import com.baseproject.data.prefs.PrefsEntity
+import com.baseproject.domain.enums.getStatusName
+import com.baseproject.domain.local.achievements.AchievementsRepository
 import com.baseproject.domain.local.entity.BaseEntityRepository
 import com.baseproject.view.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel @Inject constructor(private val baseEntityRepository: BaseEntityRepository) :
-    BaseViewModel<UserContract.Event, UserContract.State, UserContract.Effect>() {
+class UserViewModel @Inject constructor(
+    private val baseEntityRepository: BaseEntityRepository,
+    private val achievementsRepository: AchievementsRepository,
+    private val prefsEntity: PrefsEntity,
+    private val resources: Resources
+) : BaseViewModel<UserContract.Event, UserContract.State, UserContract.Effect>() {
 
     override fun createInitialState(): UserContract.State {
         return UserContract.State.InitialState
@@ -19,15 +30,34 @@ class UserViewModel @Inject constructor(private val baseEntityRepository: BaseEn
      */
     override fun handleEvent(event: UserContract.Event) {
         when (event) {
+            UserContract.Event.CheckAchievementsDatabase -> {
+                viewModelScope.launch(Dispatchers.IO) {
+                    val isAchievementsDatabaseFilled =
+                        prefsEntity.achievementsCount == achievementsRepository.getEntitiesCount()
+                    if (!isAchievementsDatabaseFilled) setEffect { UserContract.Effect.FillAchievementsList }
+                }
+            }
+            is UserContract.Event.FillAchievementsDatabase -> {
+                viewModelScope.launch {
+                    achievementsRepository.insertAchievements(event.list)
+                }
+            }
             UserContract.Event.OnSettingsClicked -> {
                 setEffect { UserContract.Effect.NavigateSettings }
             }
             UserContract.Event.OnStartClicked -> {
                 setEffect { UserContract.Effect.NavigateGame }
             }
+            UserContract.Event.OnAchievementsClicked -> {
+                setEffect { UserContract.Effect.NavigateAchievements }
+            }
         }
     }
 
     fun getUserStatisticData() = baseEntityRepository.getAllEntities()
+
+    fun getRecord() = prefsEntity.record
+    fun getAttempts() = prefsEntity.attempts
+    fun getStatus() = prefsEntity.status.getStatusName(resources)
 
 }

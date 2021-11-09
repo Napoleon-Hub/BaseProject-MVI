@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.baseproject.data.room.dao.AchievementsDao
 import com.baseproject.data.room.dao.BaseEntitiesDao
+import com.baseproject.data.room.entity.AchievementsEntity
 import com.baseproject.data.room.entity.BaseEntity
 
-@Database(entities = [BaseEntity::class], exportSchema = true, version = 1)
+@Database(entities = [BaseEntity::class, AchievementsEntity::class], exportSchema = true, version = 3)
 abstract class BaseRoomDatabase : RoomDatabase() {
     abstract fun entitiesDao(): BaseEntitiesDao
+    abstract fun achievementsDao(): AchievementsDao
 
     companion object {
         @Volatile

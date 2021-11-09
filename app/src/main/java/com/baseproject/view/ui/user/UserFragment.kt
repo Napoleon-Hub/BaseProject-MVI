@@ -6,16 +6,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baseproject.R
-import com.baseproject.data.prefs.PrefsEntity
+import com.baseproject.data.room.entity.AchievementsEntity
 import com.baseproject.databinding.FragmentUserBinding
 import com.baseproject.domain.enums.SocialStatus
-import com.baseproject.domain.enums.SocialStatus.*
+import com.baseproject.domain.enums.getStatusName
+import com.baseproject.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import com.baseproject.utils.extentions.setOnClickListener
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.user.adapter.UserRecyclerViewAdapter
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -25,9 +25,6 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
 
     private val viewModel: UserViewModel by viewModels()
 
-    @Inject
-    lateinit var preferences: PrefsEntity
-
     private val adapter by lazy { UserRecyclerViewAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,17 +32,9 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun initUI() = binding.run {
-        rvGamesStatistics.adapter = adapter
-    }
-
-    override fun initSetOnClickListeners() = binding.run {
-        btnStart.setOnClickListener(500) {
-            viewModel.setEvent(UserContract.Event.OnStartClicked)
-        }
-        btnSettings.setOnClickListener(500) {
-            viewModel.setEvent(UserContract.Event.OnSettingsClicked)
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.setEvent(UserContract.Event.CheckAchievementsDatabase)
     }
 
     override fun initObservers() {
@@ -53,19 +42,29 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
         lifecycleScope.launchWhenCreated {
             viewModel.uiState.collect {
                 when (it) {
-                    UserContract.State.InitialState -> initMutableFields()
+                    UserContract.State.InitialState -> {
+                        initUI()
+                        initSetOnClickListeners()
+                    }
                 }
             }
         }
 
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launchWhenCreated {
             viewModel.effect.collect {
                 when (it) {
+                    UserContract.Effect.FillAchievementsList -> {
+                        val achievementsList = createAchievementsList()
+                        viewModel.setEvent(UserContract.Event.FillAchievementsDatabase(achievementsList))
+                    }
                     UserContract.Effect.NavigateSettings -> {
                         navigate(UserFragmentDirections.actionUserFragmentToSettingsFragment())
                     }
                     UserContract.Effect.NavigateGame -> {
                         navigate(UserFragmentDirections.actionUserFragmentToGameFragment())
+                    }
+                    UserContract.Effect.NavigateAchievements -> {
+                        navigate(UserFragmentDirections.actionUserFragmentToAchievementsFragment())
                     }
                 }
             }
@@ -78,24 +77,66 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
 
     }
 
-    private fun initMutableFields() = binding.apply {
-        tvWins.text = getString(R.string.user_wins, preferences.wins)
-        tvAttempts.text = getString(R.string.user_attempts, preferences.attempts)
-        tvName.text = getString(R.string.user_name, preferences.name)
-        tvStatus.text = getString(R.string.user_social_status, preferences.status.getStatusName())
+    override fun initUI() {
+        binding.rvGamesStatistics.adapter = adapter
+        initMutableFields()
     }
 
-    private fun Enum<SocialStatus>.getStatusName(): String {
-        val socialStatusArray = resources.getStringArray(R.array.settings_social_status_array)
-        return when(this) {
-            NAZI       -> socialStatusArray[0]
-            PREGNANT   -> socialStatusArray[1]
-            ALCOHOLIC  -> socialStatusArray[2]
-            LUKASHENKA -> socialStatusArray[3]
-            KITTY      -> socialStatusArray[4]
-            ON_PILLS   -> socialStatusArray[5]
-            else       -> socialStatusArray[6]
+    override fun initSetOnClickListeners() = binding.run {
+        btnStart.setOnClickListener(500) {
+            viewModel.setEvent(UserContract.Event.OnStartClicked)
+        }
+        btnSettings.setOnClickListener(500) {
+            viewModel.setEvent(UserContract.Event.OnSettingsClicked)
+        }
+        btnAchievements.setOnClickListener(500) {
+            viewModel.setEvent(UserContract.Event.OnAchievementsClicked)
         }
     }
 
+    private fun initMutableFields() = binding.apply {
+        tvRecord.text = getString(R.string.user_record, viewModel.getRecord())
+        tvAttempts.text = getString(R.string.user_attempts, viewModel.getAttempts())
+        tvStatus.text = getString(R.string.user_social_status, viewModel.getStatus())
+    }
+
+
+    private fun createAchievementsList(): List<AchievementsEntity> = listOf(
+        AchievementsEntity(
+            SocialStatus.NAZI.getStatusName(resources), R.drawable.img_nazi,
+            R.string.achievements_nazi_title, R.string.achievements_nazi_description
+        ),
+        AchievementsEntity(
+            SocialStatus.PREGNANT.getStatusName(resources), R.drawable.img_pregnant,
+            R.string.achievements_pregnant_title, R.string.achievements_pregnant_description
+        ),
+        AchievementsEntity(
+            SocialStatus.ALCOHOLIC.getStatusName(resources), R.drawable.img_alcoholic,
+            R.string.achievements_alcoholic_title, R.string.achievements_alcoholic_description
+        ),
+        AchievementsEntity(
+            SocialStatus.LUKASHENKA.getStatusName(resources), R.drawable.img_lukashenka,
+            R.string.achievements_lukashenka_title, R.string.achievements_lukashenka_description
+        ),
+        AchievementsEntity(
+            SocialStatus.KITTY.getStatusName(resources), R.drawable.img_kitty,
+            R.string.achievements_kitty_title, R.string.achievements_kitty_description
+        ),
+        AchievementsEntity(
+            SocialStatus.ON_PILLS.getStatusName(resources), R.drawable.img_on_pills,
+            R.string.achievements_on_pills_title, R.string.achievements_on_pills_description
+        ),
+        AchievementsEntity(
+            SocialStatus.BOGDAN.getStatusName(resources), R.drawable.img_bogdan,
+            R.string.achievements_bogdan_title, R.string.achievements_bogdan_description
+        ),
+        AchievementsEntity(
+            ACHIEVE_LOSER_ID, R.drawable.img_loser,
+            R.string.achievements_loser_title, R.string.achievements_loser_description
+        ),
+        AchievementsEntity(
+            ACHIEVE_TRUTH_ID, R.drawable.img_truth,
+            R.string.achievements_truth_title, R.string.achievements_truth_description
+        )
+    )
 }

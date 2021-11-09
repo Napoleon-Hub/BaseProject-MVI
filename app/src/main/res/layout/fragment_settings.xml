@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvSettings"
         style="@style/TvStatsTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -21,61 +21,84 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_padding_size_12"
         android:padding="@dimen/margin_padding_size_8"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSettings"
+        app:layout_constraintStart_toStartOf="@+id/tvSettings"
+        app:layout_constraintTop_toTopOf="@+id/tvSettings"
         app:srcCompat="@drawable/ic_back" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etName"
-        style="@style/TvGameStats"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_padding_size_30"
-        android:layout_marginTop="@dimen/margin_padding_size_30"
-        android:layout_marginEnd="@dimen/margin_padding_size_30"
-        android:background="@drawable/bg_gray_rounded"
-        android:hint="@string/settings_name"
-        android:maxLength="15"
-        android:paddingStart="@dimen/margin_padding_size_30"
-        android:paddingTop="@dimen/margin_padding_size_16"
-        android:paddingEnd="@dimen/margin_padding_size_30"
-        android:paddingBottom="@dimen/margin_padding_size_16"
-        android:singleLine="true"
-        android:elevation="@dimen/margin_padding_size_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/tvStatus"
         style="@style/TvStatsParams"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_padding_size_4"
-        android:layout_marginTop="@dimen/margin_padding_size_16"
+        android:layout_marginStart="@dimen/margin_padding_size_30"
+        android:layout_marginTop="@dimen/margin_padding_size_30"
         android:text="@string/settings_social_status"
-        app:layout_constraintStart_toStartOf="@+id/etName"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettings" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerStatus"
         style="@style/SpinnerTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/margin_padding_size_3"
         android:layout_marginStart="@dimen/margin_padding_size_16"
+        android:elevation="@dimen/margin_padding_size_3"
         app:layout_constraintBottom_toBottomOf="@+id/tvStatus"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvStatus"
         app:layout_constraintTop_toTopOf="@+id/tvStatus" />
+
+    <TextView
+        android:id="@+id/tvDifficulty"
+        style="@style/TvStatsParams"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_30"
+        android:layout_marginTop="@dimen/margin_padding_size_20"
+        android:text="@string/settings_difficulty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+    <Spinner
+        android:id="@+id/spinnerDifficulty"
+        style="@style/SpinnerTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_16"
+        android:elevation="@dimen/margin_padding_size_3"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDifficulty"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvStatus"
+        app:layout_constraintTop_toTopOf="@+id/tvDifficulty" />
+
+    <TextView
+        android:id="@+id/tvTruth"
+        style="@style/TvStatsParams"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_padding_size_24"
+        android:layout_marginStart="@dimen/margin_padding_size_30"
+        android:text="@string/settings_truth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDifficulty" />
+
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/rbTruth"
+        android:layout_width="@dimen/margin_padding_size_30"
+        android:layout_height="@dimen/margin_padding_size_30"
+        android:layout_marginStart="@dimen/margin_padding_size_24"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTruth"
+        app:layout_constraintStart_toEndOf="@+id/tvTruth"
+        app:layout_constraintTop_toTopOf="@+id/tvTruth" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"
         style="@style/ButtonStart"
         android:text="@string/settings_save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etName"
-        app:layout_constraintStart_toStartOf="@+id/etName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

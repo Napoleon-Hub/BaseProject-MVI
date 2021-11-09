@@ -19,12 +19,19 @@
             app:popEnterAnim="@anim/pop_slide_in"
             app:popExitAnim="@anim/pop_slide_out" />
         <action
-            android:id="@+id/action_userFragment_to_gameFragment"
+            android:id="@+id/actionUserFragmentToGameFragment"
             app:destination="@id/gameFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/pop_slide_in"
             app:popExitAnim="@anim/pop_slide_out" />
+        <action
+            android:id="@+id/actionUserFragmentToAchievementsFragment"
+            app:destination="@id/achievementsFragment"
+            app:enterAnim="@anim/pop_slide_in"
+            app:exitAnim="@anim/pop_slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
 
     </fragment>
 
@@ -39,5 +46,11 @@
         android:name="com.baseproject.view.ui.game.GameFragment"
         android:label="GameFragment"
         tools:layout="@layout/fragment_game"/>
+
+    <fragment
+        android:id="@+id/achievementsFragment"
+        android:name="com.baseproject.view.ui.achievements.AchievementsFragment"
+        android:label="AchievementsFragment"
+        tools:layout="@layout/fragment_achievements"/>
 
 </navigation>

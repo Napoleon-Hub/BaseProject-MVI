@@ -3,23 +3,27 @@
 
     <!-- User -->
     <string name="user_stats">User statistics</string>
-    <string name="user_wins">Wins: %d</string>
+    <string name="user_record">Record: %d</string>
     <string name="user_attempts">Attempts: %d</string>
-    <string name="user_name">Nickname: %s</string>
     <string name="user_social_status">Social Status: %s</string>
-    <string name="user_score">Score: %d</string>
+    <string name="user_score">%s: %d</string>
     <string name="user_win">Win</string>
     <string name="user_lose">Lose</string>
     <string name="user_start_game">Start</string>
 
     <!-- Settings -->
     <string name="settings">Settings</string>
-    <string name="settings_name">Nickname*</string>
     <string name="settings_social_status">Social status:</string>
+    <string name="settings_difficulty">Difficulty:</string>
+    <string name="settings_truth">At parties don\'t mind singing \nalong to the song of Morgenstern\n - ПОСОСИ</string>
     <string name="settings_save">Save</string>
     <string name="settings_impostor_dialog_title">Impostor?</string>
     <string name="settings_impostor_dialog_description">Something tells me that you are not Bogdan -_-. Don\'t try to fool me!</string>
     <string name="settings_impostor_dialog_button">Run!</string>
+    <string name="settings_warning_dialog_title">Warning</string>
+    <string name="settings_warning_dialog_description">On this difficulty, you will receive less extra time after each cycle!
+        If you win this difficulty, I will add your name to the bible as a saint</string>
+    <string name="settings_warning_dialog_button">Mmmm, okay</string>
     <string-array name="settings_social_status_array">
         <item>Nazi</item>
         <item>Pregnant</item>
@@ -29,10 +33,14 @@
         <item>On pills</item>
         <item>Bogdan</item>
     </string-array>
+    <string-array name="settings_difficulty_array">
+        <item>Weakling</item>
+        <item>Terminator</item>
+    </string-array>
 
     <!-- Game -->
     <string name="game_stop">Stop the Game</string>
-    <string name="game_rules">Press the buttons in the correct\norder and get 130 scores to win</string>
+    <string name="game_rules">Press the buttons in the correct\norder and get %d scores to win</string>
     <string-array name="game_words_array">
         <item>one</item>
         <item>two</item>
@@ -61,6 +69,32 @@
     <string name="game_lose_on_pills_description">Hope you\'re on diarrhea pills now because you fucked up</string>
     <string name="game_lose_bogdan_description">Okay, let\'s believe that you are Bogdan, he would never have won this game</string>
     <string name="game_cancel">Cancel</string>
+
+    <!--Achievements -->
+    <string name="achievements">Achievements</string>
+    <string name="achievements_nazi_title">Holocaust? No, I have not heard</string>
+    <string name="achievements_nazi_description">Win on high difficulty as Nazi</string>
+    <string name="achievements_pregnant_title">Pregnant at 16</string>
+    <string name="achievements_pregnant_description">Win on high difficulty and become an iamthemother</string>
+    <string name="achievements_alcoholic_title">Drink only vodka</string>
+    <string name="achievements_alcoholic_description">Win on high difficulty while drunk</string>
+    <string name="achievements_lukashenka_title">Enemy of the people</string>
+    <string name="achievements_lukashenka_description">Win on high difficulty as Dictator</string>
+    <string name="achievements_kitty_title">I have paws</string>
+    <string name="achievements_kitty_description">Win on high difficulty by being soft and fluffy</string>
+    <string name="achievements_on_pills_title">Didn\'t pass a doping test</string>
+    <string name="achievements_on_pills_description">Win on high difficulty playing on pills in the mental hospital</string>
+    <string name="achievements_bogdan_title">Mom\'s friend\'s son</string>
+    <string name="achievements_bogdan_description">Become successful</string>
+    <string name="achievements_loser_title">I\'m just watching</string>
+    <string name="achievements_loser_description">Lose in disgrace</string>
+    <string name="achievements_truth_title">Truth can be cruel</string>
+    <string name="achievements_truth_description">Accept truth and it\'ll stay with you forever</string>
+    <string name="achievements_dialog_be_cool_title">Be cool</string>
+    <string name="achievements_dialog_be_cool_description">If you get all the achievements in this game, you can quit the company.
+        Or is it just an attempt to make you play?</string>
+    <string name="achievements_dialog_be_cool_button">I can escape</string>
+    <string name="achievements_toast_text">You have a new achievement!</string>
 
     <!-- Errors -->
     <string name="generic_error">Something went wrong. Please try later.</string>
