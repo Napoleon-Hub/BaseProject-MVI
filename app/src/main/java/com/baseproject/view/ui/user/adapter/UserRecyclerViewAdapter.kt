@@ -12,6 +12,8 @@ import com.baseproject.databinding.ItemGameStatisticsBinding
 class UserRecyclerViewAdapter :
     ListAdapter<BaseEntity, UserRecyclerViewAdapter.ItemViewHolder>(DiffCallback()) {
 
+    var clickListener: ((BaseEntity) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemPersonBinding = ItemGameStatisticsBinding.inflate(layoutInflater, parent, false)
@@ -25,13 +27,13 @@ class UserRecyclerViewAdapter :
     inner class ItemViewHolder(private val binding: ItemGameStatisticsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BaseEntity) = with(itemView) {
+            binding.ivShare.setOnClickListener { clickListener?.invoke(item) }
             binding.tvScore.text = context.getString(
                 R.string.user_score,
                 resources.getStringArray(R.array.settings_difficulty_array)[item.difficulty],
                 item.score
             )
-            binding.tvResult.text = if (item.isWin) context.getString(R.string.user_win)
-            else context.getString(R.string.user_lose)
+            binding.tvResult.text = if (item.isWin) context.getString(R.string.user_win) else context.getString(R.string.user_lose)
         }
     }
 

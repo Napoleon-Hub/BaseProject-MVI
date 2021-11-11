@@ -67,6 +67,11 @@ class AchievementsFragment : BaseFragment(R.layout.fragment_achievements), Dialo
 
     override fun initUI() = binding.run {
         rvAchievements.adapter = adapter
+        tvAchievement.text = getString(
+            R.string.achievements,
+            viewModel.achievementsReceived,
+            viewModel.achievementsCount
+        )
     }
 
     override fun initSetOnClickListeners() = binding.run {

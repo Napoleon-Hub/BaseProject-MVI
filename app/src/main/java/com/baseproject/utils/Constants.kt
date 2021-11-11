@@ -1,6 +1,6 @@
 package com.baseproject.utils
 
-const val WIN_SCORE = 120
+const val WIN_SCORE = 140
 const val TIME_OUT = 10L
 const val MAX_FIELD_LENGTH = 50
 

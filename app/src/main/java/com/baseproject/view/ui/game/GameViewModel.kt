@@ -63,6 +63,7 @@ class GameViewModel @Inject constructor(
 
     private suspend fun getAchieve(id: String) {
         setEffect { GameContract.Effect.ShowAchieveToast }
+        achievementsReceived++
         achievementsRepository.updateReceipt(id, true)
     }
 
@@ -71,7 +72,8 @@ class GameViewModel @Inject constructor(
             val count = baseEntityRepository.getEntitiesCount()
             baseEntityRepository.insertEntity(
                 BaseEntity(
-                    id = count, score = score, isWin = isWin, difficulty = difficulty.ordinal
+                    id = count, score = score, isWin = isWin,
+                    difficulty = difficulty.ordinal, status = status.ordinal
                 )
             )
         }
@@ -82,13 +84,11 @@ class GameViewModel @Inject constructor(
         attempts++
     }
 
-    var status: Enum<SocialStatus>
+    val status: Enum<SocialStatus>
         get() = prefsEntity.status
-        set(value) { prefsEntity.status = value }
 
-    var difficulty: Enum<Difficulty>
+    val difficulty: Enum<Difficulty>
         get() = prefsEntity.difficulty
-        set(value) { prefsEntity.difficulty = value }
 
     private var attempts: Int
         get() = prefsEntity.attempts
@@ -97,5 +97,9 @@ class GameViewModel @Inject constructor(
     private var record: Int
         get() = prefsEntity.record
         set(value) { prefsEntity.record = value }
+
+    private var achievementsReceived: Int
+        get() = prefsEntity.achievementsReceived
+        set(value) { prefsEntity.achievementsReceived = value }
 
 }

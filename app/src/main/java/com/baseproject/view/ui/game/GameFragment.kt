@@ -193,6 +193,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
             }
 
             override fun onFinish() {
+                binding.rvGameItems.disable()
                 viewModel.setEvent(GameContract.Event.GameFinished(scoreCounter, resources))
             }
         }.start()

@@ -24,7 +24,6 @@ class SettingsContract {
         object NavigateUser : Effect()
         object ImpostorDialog : Effect()
         object WarningDialog : Effect()
-        object ShowAchieveToast : Effect()
     }
 
 }

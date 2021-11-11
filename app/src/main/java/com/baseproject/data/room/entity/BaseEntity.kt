@@ -10,5 +10,6 @@ data class BaseEntity(
     val id: Int,
     val score: Int,
     val isWin: Boolean,
-    val difficulty: Int = 0
+    val difficulty: Int = 0,
+    val status: Int = 0
 )

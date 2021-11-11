@@ -1,9 +1,8 @@
 package com.baseproject.view.ui.user
 
-import android.content.res.Resources
 import androidx.lifecycle.viewModelScope
 import com.baseproject.data.prefs.PrefsEntity
-import com.baseproject.domain.enums.getStatusName
+import com.baseproject.domain.enums.SocialStatus
 import com.baseproject.domain.local.achievements.AchievementsRepository
 import com.baseproject.domain.local.entity.BaseEntityRepository
 import com.baseproject.view.base.BaseViewModel
@@ -16,8 +15,7 @@ import javax.inject.Inject
 class UserViewModel @Inject constructor(
     private val baseEntityRepository: BaseEntityRepository,
     private val achievementsRepository: AchievementsRepository,
-    private val prefsEntity: PrefsEntity,
-    private val resources: Resources
+    private val prefsEntity: PrefsEntity
 ) : BaseViewModel<UserContract.Event, UserContract.State, UserContract.Effect>() {
 
     override fun createInitialState(): UserContract.State {
@@ -56,8 +54,13 @@ class UserViewModel @Inject constructor(
 
     fun getUserStatisticData() = baseEntityRepository.getAllEntities()
 
-    fun getRecord() = prefsEntity.record
-    fun getAttempts() = prefsEntity.attempts
-    fun getStatus() = prefsEntity.status.getStatusName(resources)
+    val record: Int
+        get() = prefsEntity.record
+
+    val attempts: Int
+        get() = prefsEntity.attempts
+
+    val status: Enum<SocialStatus>
+        get() = prefsEntity.status
 
 }

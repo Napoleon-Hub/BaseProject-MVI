@@ -1,5 +1,6 @@
 package com.baseproject.view.ui.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.collect
 import com.baseproject.utils.extentions.setOnClickListener
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.user.adapter.UserRecyclerViewAdapter
+import com.baseproject.view.ui.user.helpers.PhraseGenerator
 
 
 @AndroidEntryPoint
@@ -78,6 +80,10 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
     }
 
     override fun initUI() {
+        adapter.clickListener = {
+            val phrase = PhraseGenerator().generateSharePhrase(it, requireContext(), resources)
+            shareText(phrase)
+        }
         binding.rvGamesStatistics.adapter = adapter
         initMutableFields()
     }
@@ -95,11 +101,10 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
     }
 
     private fun initMutableFields() = binding.apply {
-        tvRecord.text = getString(R.string.user_record, viewModel.getRecord())
-        tvAttempts.text = getString(R.string.user_attempts, viewModel.getAttempts())
-        tvStatus.text = getString(R.string.user_social_status, viewModel.getStatus())
+        tvRecord.text = getString(R.string.user_record, viewModel.record)
+        tvAttempts.text = getString(R.string.user_attempts, viewModel.attempts)
+        tvStatus.text = getString(R.string.user_social_status, viewModel.status.getStatusName(resources))
     }
-
 
     private fun createAchievementsList(): List<AchievementsEntity> = listOf(
         AchievementsEntity(
@@ -139,4 +144,19 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
             R.string.achievements_truth_title, R.string.achievements_truth_description
         )
     )
+
+    private fun shareText(phrase: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, phrase)
+            type = SHARE_TEXT_TYPE
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
+    }
+
+    companion object {
+        private const val SHARE_TEXT_TYPE = "text/plain"
+    }
 }

@@ -7,7 +7,7 @@
     <string name="user_record">Рекорд: %d</string>
     <string name="user_attempts">Попыток: %d</string>
     <string name="user_social_status">Соц. статус: %s</string>
-    <string name="user_score">%s: %d</string>
+    <string name="user_score">%1$s: %2$d</string>
     <string name="user_win">Победа</string>
     <string name="user_lose">Поражение</string>
     <string name="user_start_game">Начать</string>
@@ -16,7 +16,7 @@
     <string name="settings">Настройки</string>
     <string name="settings_social_status">Соц. статус:</string>
     <string name="settings_difficulty">Сложность:</string>
-    <string name="settings_truth">На тусовках не против\n подпевать песне Моргенштерна\n - ПОСОСИ</string>
+    <string name="settings_truth">На тусовках не против подпевать\nпесне Моргенштерна - ПОСОСИ</string>
     <string name="settings_save">Сохранить</string>
     <string name="settings_impostor_dialog_title">Самозванец?</string>
     <string name="settings_impostor_dialog_description">Что-то мне подсказывает, что ты не Богдан -_- . Не пытайся обмануть меня!</string>
@@ -72,7 +72,7 @@
     <string name="game_cancel">Закрыть</string>
 
     <!--Achievements -->
-    <string name="achievements">Достижения</string>
+    <string name="achievements">Достижения %1$d/%2$d</string>
     <string name="achievements_nazi_title">Холокост? Не, не слышал</string>
     <string name="achievements_nazi_description">Победить на высокой сложности, играя за чувака со свастикой на лбу</string>
     <string name="achievements_pregnant_title">Беременна в 16</string>
@@ -96,6 +96,16 @@
     Ну или же это просто байт, чтобы завтавить тебя играть?</string>
     <string name="achievements_dialog_be_cool_button">Я спасусь!</string>
     <string name="achievements_toast_text">У вас новое достижение!</string>
+
+    <!-- Share Phrase -->
+    <string name="generator_nazi">Сложность: %1$s. Я набрал %2$d очков в этой проклятой игре и стал героем своей нации. А в этой вонючей стране прокинул зигу и все, посадили на бутылку.</string>
+    <string name="generator_pregnant">Сложность: %1$s. У меня %2$d очков в этой игре и по-моему моей скорости должен позавидовать каждый! Особенно мой партнер, которому высунуть вовремя скорости не хватило.</string>
+    <string name="generator_alcoholic">Сложность: %1$s. У меня %2$d очков и я без понятия, что это значит, потому что и в горе и в радости я под градусом. Пойдем лучше бухать, а?</string>
+    <string name="generator_lukashenka">Сложность: %1$s. Я набрал %2$d очков и могу сказать одно! В этой игре нет вирусов никаких, вот ты же не заметил, что они летают? Вот, и я тоже не вижу.</string>
+    <string name="generator_kitty">Сложность: %1$s. Я набрал %2$d очков и это больше, чем способен набрать среднестатистический человечишка. А у меня даже нет пальцев!</string>
+    <string name="generator_on_pills">Сложность: %1$s. Я набрал %2$d очков и знаете, я  в своем познании на столько преисполнился, я как будто бы уже 100 триллионов миллиардов лет проживаю на триллионах и триллионах таких же планет. Ну либо дело в таблетках, на которых я сижу.</string>
+    <string name="generator_bogdan">Сложность: %1$s. Я набрал %2$d очков в своей же игре. И это не важно, потому что правила написаны мной, но если количество очков в предыдущем предложении запредельное, то я горжусь собой!</string>
+    <string name="generator_additional">Сложность: %1$s. Я набрал %2$d очков в этой проклятой игре. Здесь я словил столько оскорблений, что теперь мне необходима помощь психолога, спасибо!</string>
 
     <!-- Errors -->
     <string name="generic_error">Что-то пошло не так, пожалуйста повторите попытку позже.</string>

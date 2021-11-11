@@ -9,7 +9,7 @@ import com.baseproject.data.room.dao.BaseEntitiesDao
 import com.baseproject.data.room.entity.AchievementsEntity
 import com.baseproject.data.room.entity.BaseEntity
 
-@Database(entities = [BaseEntity::class, AchievementsEntity::class], exportSchema = true, version = 3)
+@Database(entities = [BaseEntity::class, AchievementsEntity::class], exportSchema = true, version = 4)
 abstract class BaseRoomDatabase : RoomDatabase() {
     abstract fun entitiesDao(): BaseEntitiesDao
     abstract fun achievementsDao(): AchievementsDao

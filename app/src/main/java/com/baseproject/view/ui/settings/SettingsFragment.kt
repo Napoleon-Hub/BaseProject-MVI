@@ -13,7 +13,6 @@ import com.baseproject.domain.enums.Difficulty
 import com.baseproject.domain.enums.SocialStatus
 import com.baseproject.utils.extentions.launchedWhenStarted
 import com.baseproject.utils.extentions.setOnClickListener
-import com.baseproject.utils.extentions.toast
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.game.dialog.GameDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -69,9 +68,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings),
                             buttonTextId = R.string.settings_warning_dialog_button,
                             descriptionId = R.string.settings_warning_dialog_description
                         )
-                    }
-                    SettingsContract.Effect.ShowAchieveToast -> {
-                        toast(R.string.achievements_toast_text)
                     }
                 }
             }

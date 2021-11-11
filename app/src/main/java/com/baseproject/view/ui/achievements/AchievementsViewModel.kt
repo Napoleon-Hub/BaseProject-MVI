@@ -34,6 +34,12 @@ class AchievementsViewModel @Inject constructor(
         }
     }
 
+    val achievementsCount: Int
+        get() = prefsEntity.achievementsCount
+
+    val achievementsReceived: Int
+        get() = prefsEntity.achievementsReceived
+
     private var firstBeCoolDialog: Boolean
         get() = prefsEntity.firstBeCoolDialog
         set(value) { prefsEntity.firstBeCoolDialog = value }

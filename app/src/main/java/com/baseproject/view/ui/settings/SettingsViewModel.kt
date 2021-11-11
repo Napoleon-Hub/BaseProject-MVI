@@ -10,7 +10,6 @@ import com.baseproject.view.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,11 +26,13 @@ class SettingsViewModel @Inject constructor(
         when (event) {
             is SettingsContract.Event.OnSaveClicked -> {
                 when {
-                    event.difficulty == Difficulty.TERMINATOR -> {
+                    event.difficulty == Difficulty.TERMINATOR && firstTerminatorDialog -> {
                         setEffect { SettingsContract.Effect.WarningDialog }
+                        firstTerminatorDialog = false
                     }
-                    event.status == SocialStatus.BOGDAN -> {
+                    event.status == SocialStatus.BOGDAN && firstBogdanDialog -> {
                         setEffect { SettingsContract.Effect.ImpostorDialog }
+                        firstBogdanDialog = false
                     }
                     else -> setEffect { SettingsContract.Effect.SaveSettings }
                 }
@@ -39,9 +40,7 @@ class SettingsViewModel @Inject constructor(
             is SettingsContract.Event.CheckTruth -> {
                 viewModelScope.launch(Dispatchers.IO) {
                     if (!achievementsRepository.getAchieveById(ACHIEVE_TRUTH_ID).achieveReceived) {
-                        withContext(Dispatchers.Main) {
-                            setEffect { SettingsContract.Effect.ShowAchieveToast }
-                        }
+                        achievementsReceived++
                         achievementsRepository.updateReceipt(ACHIEVE_TRUTH_ID, true)
                     }
                 }
@@ -66,5 +65,17 @@ class SettingsViewModel @Inject constructor(
     var truth: Boolean
         get() = prefsEntity.truth
         set(value) { prefsEntity.truth = value }
+
+    private var firstBogdanDialog: Boolean
+        get() = prefsEntity.firstBogdanDialog
+        set(value) { prefsEntity.firstBogdanDialog = value }
+
+    private var firstTerminatorDialog: Boolean
+        get() = prefsEntity.firstTerminatorDialog
+        set(value) { prefsEntity.firstTerminatorDialog = value }
+
+    private var achievementsReceived: Int
+        get() = prefsEntity.achievementsReceived
+        set(value) { prefsEntity.achievementsReceived = value }
 
 }

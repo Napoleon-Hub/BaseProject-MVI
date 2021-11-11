@@ -15,9 +15,12 @@ class PrefsEntity @Inject constructor(@ApplicationContext val ctx: Context) {
     var attempts by activeInt(0)
     var status by activeEnum(SocialStatus.ALCOHOLIC) { SocialStatus.valueOf(it) }
     var difficulty by activeEnum(Difficulty.WEAKLING) { Difficulty.valueOf(it) }
-    var achievementsCount by activeInt(9)
     var truth by activeBoolean(false)
+    val achievementsCount by activeInt(9)
+    var achievementsReceived by activeInt(0)
 
     var firstBeCoolDialog by activeBoolean(true)
+    var firstBogdanDialog by activeBoolean(true)
+    var firstTerminatorDialog by activeBoolean(true)
 
 }
