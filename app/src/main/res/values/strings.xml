@@ -52,6 +52,7 @@
         <item>eight</item>
         <item>nine</item>
     </string-array>
+    <string name="game_score">%d scores</string>
     <string name="game_win_title">Have you won?</string>
     <string name="game_win_alcoholic_description">You won, of course, but instead of playing you\'d better go Alcoholics Anonymous and get some medical treatment</string>
     <string name="game_win_pregnant_description">This is a victory, but if you are a pregnant guy, I advise you to see a doctor in Novinki.</string>
@@ -90,6 +91,8 @@
     <string name="achievements_loser_description">Lose in disgrace</string>
     <string name="achievements_truth_title">Truth can be cruel</string>
     <string name="achievements_truth_description">Accept truth and it\'ll stay with you forever</string>
+    <string name="achievements_weakling_title">Easy win</string>
+    <string name="achievements_weakling_description">Win on easy difficulty as a weakling</string>
     <string name="achievements_dialog_be_cool_title">Be cool</string>
     <string name="achievements_dialog_be_cool_description">If you get all the achievements in this game, you can quit the company.
         Or is it just an attempt to make you play?</string>
@@ -97,7 +100,7 @@
     <string name="achievements_toast_text">You have a new achievement!</string>
 
     <!-- Share Phrase -->
-    <string name="generator_nazi">Difficulty: %1$s. I scored %2$d points in this damn game and became the hero of my nation. And in this stinking country, i showed the ridge and that\'s it, they put me on a bottle.</string>
+    <string name="generator_nazi">Difficulty: %1$s. I scored %2$d points in this damn game and became the hero of my nation. And in this stinking country, i showed the ridge and that\'s it, they put me on the bottle.</string>
     <string name="generator_pregnant">Difficulty: %1$s. I have %2$d points in this game and in my opinion everyone should envy my speed! Especially my partner, who did not have enough speed to stick out in time.</string>
     <string name="generator_alcoholic">Difficulty: %1$s. I have %2$d points and I have no idea what that means, because in sorrow and in joy I drink. Let\'s go for a drink, huh?</string>
     <string name="generator_lukashenka">Difficulty: %1$s. I got %2$d points and I can say one thing! There are no viruses in this game, you haven\'t noticed that they fly, do you? Nope, and I don\'t see either.</string>

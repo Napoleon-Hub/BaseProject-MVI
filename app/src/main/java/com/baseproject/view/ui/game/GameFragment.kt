@@ -12,7 +12,8 @@ import com.baseproject.R
 import com.baseproject.databinding.FragmentGameBinding
 import com.baseproject.domain.enums.Difficulty
 import com.baseproject.domain.enums.SocialStatus
-import com.baseproject.utils.WIN_SCORE
+import com.baseproject.utils.WIN_TERMINATOR_SCORE
+import com.baseproject.utils.WIN_WEAKLING_SCORE
 import com.baseproject.utils.extentions.*
 import com.baseproject.view.base.BaseFragment
 import com.baseproject.view.ui.game.adapter.GameRecyclerViewAdapter
@@ -47,7 +48,7 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     private var bonusTime: Long = BONUS_INTERVAL_WEAKLING
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         correctWordsArray = resources.getStringArray(R.array.game_words_array)
         randomWordsArray = correctWordsArray?.copyOf()
         randomWordsArray?.shuffle()
@@ -145,7 +146,8 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
             onFinished = ::onTimerFinish
             start(START_TIME)
         }
-        tvRules.text = getString(R.string.game_rules, WIN_SCORE)
+        val neededScores =  if (viewModel.difficulty == Difficulty.TERMINATOR) WIN_TERMINATOR_SCORE else WIN_WEAKLING_SCORE
+        tvRules.text = getString(R.string.game_rules, neededScores)
     }
 
     private fun onTimerFinish() {
@@ -217,7 +219,8 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
     }
 
     private fun showLoseDialog() {
-        val description = when (viewModel.status) {
+        val scorePartString = getString(R.string.game_score, scoreCounter)
+        val descriptionPartString = when (viewModel.status) {
             SocialStatus.ALCOHOLIC  -> getString(R.string.game_lose_alcoholic_description)
             SocialStatus.PREGNANT   -> getString(R.string.game_lose_pregnant_description)
             SocialStatus.NAZI       -> getString(R.string.game_lose_nazi_description)
@@ -226,11 +229,13 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
             SocialStatus.ON_PILLS   -> getString(R.string.game_lose_on_pills_description)
             else                    -> getString(R.string.game_lose_bogdan_description)
         }
-        GameDialogFragment(status = description,listener = this@GameFragment).show(childFragmentManager, null)
+        GameDialogFragment(status = "$scorePartString\n$descriptionPartString",listener = this@GameFragment)
+            .show(childFragmentManager, null)
     }
 
     private fun showWinBottomSheetDialog() {
-        val description = when (viewModel.status) {
+        val scorePartString = getString(R.string.game_score, scoreCounter)
+        val descriptionPartString = when (viewModel.status) {
             SocialStatus.ALCOHOLIC  -> getString(R.string.game_win_alcoholic_description)
             SocialStatus.PREGNANT   -> getString(R.string.game_win_pregnant_description)
             SocialStatus.NAZI       -> getString(R.string.game_win_nazi_description)
@@ -239,7 +244,8 @@ class GameFragment : BaseFragment(R.layout.fragment_game), DialogInterface.OnDis
             SocialStatus.ON_PILLS   -> getString(R.string.game_win_on_pills_description)
             else                    -> getString(R.string.game_win_bogdan_description)
         }
-        BottomSheetWinFragment(description, this@GameFragment).show(childFragmentManager, null)
+        BottomSheetWinFragment(status = "$scorePartString\n$descriptionPartString", listener = this@GameFragment)
+            .show(childFragmentManager, null)
     }
 
     override fun onDismiss(dialog: DialogInterface?) { navigateBack() }

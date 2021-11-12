@@ -10,7 +10,9 @@ import com.baseproject.domain.enums.getStatusName
 import com.baseproject.domain.local.achievements.AchievementsRepository
 import com.baseproject.domain.local.entity.BaseEntityRepository
 import com.baseproject.utils.ACHIEVE_LOSER_ID
-import com.baseproject.utils.WIN_SCORE
+import com.baseproject.utils.ACHIEVE_WEAKLING_ID
+import com.baseproject.utils.WIN_TERMINATOR_SCORE
+import com.baseproject.utils.WIN_WEAKLING_SCORE
 import com.baseproject.view.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +40,8 @@ class GameViewModel @Inject constructor(
     }
 
     private fun endGame(score: Int, resources: Resources) {
-        val isWin = score >= WIN_SCORE
+        val neededScores = if (difficulty == Difficulty.TERMINATOR) WIN_TERMINATOR_SCORE else WIN_WEAKLING_SCORE
+        val isWin = score >= neededScores
         if (isWin) {
             setEffect { GameContract.Effect.ShowWinBottomSheetDialog }
             if (difficulty == Difficulty.TERMINATOR) {
@@ -46,6 +49,12 @@ class GameViewModel @Inject constructor(
                     val achieveId = status.getStatusName(resources)
                     if (!achievementsRepository.getAchieveById(achieveId).achieveReceived) {
                         getAchieve(achieveId)
+                    }
+                }
+            } else if (difficulty == Difficulty.WEAKLING) {
+                viewModelScope.launch(Dispatchers.IO) {
+                    if (!achievementsRepository.getAchieveById(ACHIEVE_WEAKLING_ID).achieveReceived) {
+                        getAchieve(ACHIEVE_WEAKLING_ID)
                     }
                 }
             }

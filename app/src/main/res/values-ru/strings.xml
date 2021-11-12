@@ -53,6 +53,7 @@
         <item>восемь</item>
         <item>девять</item>
     </string-array>
+    <string name="game_score">%d очков</string>
     <string name="game_win_title">Ты че реально победил?</string>
     <string name="game_win_alcoholic_description">Ты конечно же победил, но ты не думал, что вместо того, чтобы играть в детскую игру лучше сходить в клуб анонимных алкоголиков и подлечиться?</string>
     <string name="game_win_pregnant_description">Это победа. Но если вдруг ты парень и у тебя социальный статус - Беременный, мой совет - сходи подлечись в Новинках, братишка</string>
@@ -91,6 +92,8 @@
     <string name="achievements_loser_description">Проиграть с позором</string>
     <string name="achievements_truth_title">Сказанного не вернешь</string>
     <string name="achievements_truth_description">Признай правду и правда останется с тобой навсегда</string>
+    <string name="achievements_weakling_title">Легкая победа</string>
+    <string name="achievements_weakling_description">Победить на лекгой сложности, будучи слабаком</string>
     <string name="achievements_dialog_be_cool_title">Везёт сильнейшим</string>
     <string name="achievements_dialog_be_cool_description">Говорят, если получить все ачивки в этой игре, то сможете ливнуть из компании.
     Ну или же это просто байт, чтобы завтавить тебя играть?</string>

@@ -142,6 +142,10 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
         AchievementsEntity(
             ACHIEVE_TRUTH_ID, R.drawable.img_truth,
             R.string.achievements_truth_title, R.string.achievements_truth_description
+        ),
+        AchievementsEntity(
+            ACHIEVE_WEAKLING_ID, R.drawable.img_weakling,
+            R.string.achievements_weakling_title, R.string.achievements_weakling_description
         )
     )
 
@@ -152,8 +156,7 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
             type = SHARE_TEXT_TYPE
         }
 
-        val shareIntent = Intent.createChooser(sendIntent, null)
-        startActivity(shareIntent)
+        startActivity(Intent.createChooser(sendIntent, null))
     }
 
     companion object {
