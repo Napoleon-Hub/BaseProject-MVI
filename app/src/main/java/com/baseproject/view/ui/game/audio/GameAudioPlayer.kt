@@ -44,6 +44,11 @@ class GameAudioPlayer @Inject constructor(@ApplicationContext val context: Conte
             playMedia(playlist[0])
     }
 
+    fun setMuted(state: Boolean) {
+        val volume = if (state) 0f else 1f
+        mediaPlayer.setVolume(volume, volume)
+    }
+
     fun pause() {
         playerState = PlayerState.PLAYER_STATE_PAUSED
         mediaPlayer.pause()
@@ -71,10 +76,17 @@ class GameAudioPlayer @Inject constructor(@ApplicationContext val context: Conte
 //    }
 
     fun playMusic() {
-        playlist.add(
-            SoundMediaItem(
-                SoundType.SOUND_TYPE_MUSIC,
-                musicList.random()
+        val music = musicList.random()
+        playlist.addAll(
+            listOf(
+                SoundMediaItem(
+                    SoundType.SOUND_TYPE_MUSIC,
+                    music
+                ),
+                SoundMediaItem(
+                    SoundType.SOUND_TYPE_MUSIC,
+                    music
+                )
             )
         )
         play()
@@ -138,7 +150,7 @@ class GameAudioPlayer @Inject constructor(@ApplicationContext val context: Conte
 
         enum class SoundType(private val directory: String) {
 
-//            SOUND_TYPE_PHRASE("phrases"),
+            //            SOUND_TYPE_PHRASE("phrases"),
             SOUND_TYPE_MUSIC("music"),
             SOUND_TYPE_FINISH_LOSE("lose"),
             SOUND_TYPE_FINISH_WIN("win");

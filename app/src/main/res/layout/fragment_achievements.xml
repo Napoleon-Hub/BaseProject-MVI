@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Achievements 8/8" />
+        tools:text="Achievements 8/10" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btnBack"

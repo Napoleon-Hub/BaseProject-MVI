@@ -11,11 +11,13 @@ import javax.inject.Inject
 
 class PrefsEntity @Inject constructor(@ApplicationContext val ctx: Context) {
 
-    var record by activeInt(0)
+    var recordWeakling by activeInt(0)
+    var recordTerminator by activeInt(0)
     var attempts by activeInt(0)
     var status by activeEnum(SocialStatus.ALCOHOLIC) { SocialStatus.valueOf(it) }
     var difficulty by activeEnum(Difficulty.WEAKLING) { Difficulty.valueOf(it) }
     var truth by activeBoolean(false)
+    var isMuted by activeBoolean(false)
     val achievementsCount by activeInt(10)
     var achievementsReceived by activeInt(0)
 

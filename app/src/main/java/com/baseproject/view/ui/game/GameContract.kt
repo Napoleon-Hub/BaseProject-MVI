@@ -10,7 +10,8 @@ class GameContract {
 
     sealed class Event : UiEvent {
         object GameStarted : Event()
-        data class OnAutoLoseClicked(val score: Int, val resources: Resources) : Event()
+        object OnMuteClick : Event()
+        data class OnAutoLoseClick(val score: Int, val resources: Resources) : Event()
         data class OnItemMissClick(val score: Int, val resources: Resources) : Event()
         data class GameFinished(val score: Int, val resources: Resources) : Event()
     }
@@ -24,6 +25,7 @@ class GameContract {
         object ShowLoseDialog : Effect()
         object ShowWinBottomSheetDialog : Effect()
         object ShowAchieveToast : Effect()
+        data class ChangeMuteState(val isMuted: Boolean) : Effect()
     }
 
 }

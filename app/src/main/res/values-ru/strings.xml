@@ -4,7 +4,8 @@
 
     <!-- User -->
     <string name="user_stats">Статистика\nпользователя</string>
-    <string name="user_record">Рекорд: %d</string>
+    <string name="user_record_weakling">Рекорд Слабак: %d</string>
+    <string name="user_record_terminator">Record Терминатор: %d</string>
     <string name="user_attempts">Попыток: %d</string>
     <string name="user_social_status">Соц. статус: %s</string>
     <string name="user_score">%1$s: %2$d</string>

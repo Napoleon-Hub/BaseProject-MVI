@@ -54,8 +54,11 @@ class UserViewModel @Inject constructor(
 
     fun getUserStatisticData() = baseEntityRepository.getAllEntities()
 
-    val record: Int
-        get() = prefsEntity.record
+    val recordWeakling: Int
+        get() = prefsEntity.recordWeakling
+
+    val recordTerminator: Int
+        get() = prefsEntity.recordTerminator
 
     val attempts: Int
         get() = prefsEntity.attempts

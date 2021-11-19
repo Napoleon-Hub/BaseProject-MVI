@@ -101,7 +101,8 @@ class UserFragment : BaseFragment(R.layout.fragment_user) {
     }
 
     private fun initMutableFields() = binding.apply {
-        tvRecord.text = getString(R.string.user_record, viewModel.record)
+        tvRecordWeakling.text = getString(R.string.user_record_weakling, viewModel.recordWeakling)
+        tvRecordTerminator.text = getString(R.string.user_record_terminator, viewModel.recordTerminator)
         tvAttempts.text = getString(R.string.user_attempts, viewModel.attempts)
         tvStatus.text = getString(R.string.user_social_status, viewModel.status.getStatusName(resources))
     }
